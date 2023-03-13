@@ -35,7 +35,7 @@ import java.util.List;
 
 import de.amr.games.pacman.lib.anim.EntityAnimation;
 import de.amr.games.pacman.lib.anim.EntityAnimationByDirection;
-import de.amr.games.pacman.lib.anim.FixedEntityAnimation;
+import de.amr.games.pacman.lib.anim.FrameSequence;
 import de.amr.games.pacman.lib.anim.SingleEntityAnimation;
 import de.amr.games.pacman.lib.steering.Direction;
 import de.amr.games.pacman.model.common.actors.Ghost;
@@ -241,8 +241,8 @@ public class SpritesheetMsPacMan implements Rendering2D {
 	}
 
 	@Override
-	public FixedEntityAnimation<BufferedImage> createGhostValueList() {
-		return new FixedEntityAnimation<>(rhs(0, 8), rhs(1, 8), rhs(2, 8), rhs(3, 8));
+	public FrameSequence<BufferedImage> createGhostValueList() {
+		return new FrameSequence<>(rhs(0, 8), rhs(1, 8), rhs(2, 8), rhs(3, 8));
 	}
 
 	@Override
