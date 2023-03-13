@@ -36,9 +36,9 @@ import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 import de.amr.games.pacman.controller.common.GameState;
-import de.amr.games.pacman.lib.anim.EntityAnimationByDirection;
+import de.amr.games.pacman.lib.anim.AnimationByDirection;
 import de.amr.games.pacman.lib.anim.FrameSequence;
-import de.amr.games.pacman.lib.anim.SingleEntityAnimation;
+import de.amr.games.pacman.lib.anim.SimpleAnimation;
 import de.amr.games.pacman.lib.math.Vector2i;
 import de.amr.games.pacman.lib.steering.Direction;
 import de.amr.games.pacman.model.common.GameModel;
@@ -79,19 +79,19 @@ public interface Rendering2D {
 
 	// Animations
 
-	SingleEntityAnimation<BufferedImage> createMazeFlashingAnimation(int mazeNumber);
+	SimpleAnimation<BufferedImage> createMazeFlashingAnimation(int mazeNumber);
 
-	EntityAnimationByDirection createPacMunchingAnimationMap(Pac pac);
+	AnimationByDirection createPacMunchingAnimationMap(Pac pac);
 
-	SingleEntityAnimation<BufferedImage> createPacDyingAnimation();
+	SimpleAnimation<BufferedImage> createPacDyingAnimation();
 
-	EntityAnimationByDirection createGhostColorAnimationMap(Ghost ghost);
+	AnimationByDirection createGhostColorAnimationMap(Ghost ghost);
 
-	SingleEntityAnimation<BufferedImage> createGhostBlueAnimation();
+	SimpleAnimation<BufferedImage> createGhostBlueAnimation();
 
-	SingleEntityAnimation<BufferedImage> createGhostFlashingAnimation();
+	SimpleAnimation<BufferedImage> createGhostFlashingAnimation();
 
-	EntityAnimationByDirection createGhostEyesAnimationMap(Ghost ghost);
+	AnimationByDirection createGhostEyesAnimationMap(Ghost ghost);
 
 	FrameSequence<BufferedImage> createGhostValueList();
 

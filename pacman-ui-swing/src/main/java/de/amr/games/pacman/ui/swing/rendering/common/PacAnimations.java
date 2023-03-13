@@ -24,15 +24,15 @@ SOFTWARE.
 
 package de.amr.games.pacman.ui.swing.rendering.common;
 
-import de.amr.games.pacman.lib.anim.EntityAnimation;
-import de.amr.games.pacman.lib.anim.EntityAnimationMap;
+import de.amr.games.pacman.lib.anim.Animated;
+import de.amr.games.pacman.lib.anim.AnimationMap;
 import de.amr.games.pacman.model.common.GameModel;
 import de.amr.games.pacman.model.common.actors.Pac;
 
 /**
  * @author Armin Reichert
  */
-public class PacAnimations extends EntityAnimationMap {
+public class PacAnimations extends AnimationMap {
 
 	public PacAnimations(Pac pac, Rendering2D r2D) {
 		put(GameModel.AK_PAC_DYING, r2D.createPacDyingAnimation());
@@ -42,6 +42,6 @@ public class PacAnimations extends EntityAnimationMap {
 
 	@Override
 	public void ensureRunning() {
-		animation(GameModel.AK_PAC_MUNCHING).ifPresent(EntityAnimation::ensureRunning);
+		animation(GameModel.AK_PAC_MUNCHING).ifPresent(Animated::ensureRunning);
 	}
 }

@@ -27,7 +27,7 @@ import java.awt.Graphics2D;
 
 import de.amr.games.pacman.controller.common.GameController;
 import de.amr.games.pacman.controller.mspacman.MsPacManIntermission3;
-import de.amr.games.pacman.lib.anim.EntityAnimationMap;
+import de.amr.games.pacman.lib.anim.AnimationMap;
 import de.amr.games.pacman.model.common.GameModel;
 import de.amr.games.pacman.ui.swing.entity.mspacman.Stork2D;
 import de.amr.games.pacman.ui.swing.rendering.common.PacAnimations;
@@ -62,11 +62,11 @@ public class MsPacManIntermissionScene3 extends GameScene {
 		sceneController.restart(MsPacManIntermission3.IntermissionState.FLAP);
 		ctx.clapperboard.setAnimation(SpritesheetMsPacMan.get().createClapperboardAnimation());
 		ctx.msPacMan.setAnimations(new PacAnimations(ctx.msPacMan, r2D));
-		ctx.msPacMan.animations().ifPresent(EntityAnimationMap::ensureRunning);
+		ctx.msPacMan.animations().ifPresent(AnimationMap::ensureRunning);
 		ctx.pacMan.setAnimations(new PacAnimations(ctx.pacMan, r2D));
 		var husbandMunching = SpritesheetMsPacMan.get().createHusbandMunchingAnimations(ctx.pacMan);
 		ctx.pacMan.animations().ifPresent(anims -> anims.put(GameModel.AK_PAC_MUNCHING, husbandMunching));
-		ctx.pacMan.animations().ifPresent(EntityAnimationMap::ensureRunning);
+		ctx.pacMan.animations().ifPresent(AnimationMap::ensureRunning);
 		stork2D = new Stork2D(ctx.stork, r2D);
 		stork2D.animation.restart();
 	}

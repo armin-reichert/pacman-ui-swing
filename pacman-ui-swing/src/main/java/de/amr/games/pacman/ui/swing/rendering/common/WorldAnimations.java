@@ -24,7 +24,7 @@ SOFTWARE.
 
 package de.amr.games.pacman.ui.swing.rendering.common;
 
-import de.amr.games.pacman.lib.anim.EntityAnimationMap;
+import de.amr.games.pacman.lib.anim.AnimationMap;
 import de.amr.games.pacman.lib.anim.Pulse;
 import de.amr.games.pacman.model.common.GameModel;
 
@@ -32,7 +32,7 @@ import de.amr.games.pacman.model.common.GameModel;
  * @author Armin Reichert
  *
  */
-public class WorldAnimations extends EntityAnimationMap {
+public class WorldAnimations extends AnimationMap {
 
 	public WorldAnimations(Rendering2D r2D, int levelNumber) {
 		put(GameModel.AK_MAZE_ENERGIZER_BLINKING, new Pulse(10, true));
