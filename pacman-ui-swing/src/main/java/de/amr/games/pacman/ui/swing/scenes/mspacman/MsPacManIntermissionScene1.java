@@ -80,7 +80,7 @@ public class MsPacManIntermissionScene1 extends GameScene {
 
 	@Override
 	public void render(Graphics2D g) {
-		((SpritesheetMsPacMan) r2D).drawFlap(g, ctx.clapperboard);
+		((SpritesheetMsPacMan) r2D).drawClapperboard(g, ctx.clapperboard);
 		r2D.drawPac(g, ctx.msPac);
 		r2D.drawPac(g, ctx.pacMan);
 		r2D.drawGhost(g, ctx.inky);

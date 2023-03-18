@@ -327,16 +327,18 @@ public class SpritesheetMsPacMan implements Rendering2D {
 		g.drawString("1980/1981", x + t(8), y + t(4));
 	}
 
-	public void drawFlap(Graphics2D g, Clapperboard flap) {
-		if (flap.isVisible()) {
-			flap.animation().map(Animated::animate).ifPresent(spriteObj -> {
+	public void drawClapperboard(Graphics2D g, Clapperboard clap) {
+		if (clap.isVisible()) {
+			clap.animation().map(Animated::animate).ifPresent(spriteObj -> {
 				var sprite = (BufferedImage) spriteObj;
-				drawEntity(g, flap, sprite);
+				if (clap.isVisible()) {
+					drawSpriteCenteredOverBox(g, sprite, clap.position().x(), clap.position().y());
+				}
 				g.setFont(getArcadeFont());
 				g.setColor(new Color(222, 222, 255));
-				g.drawString(flap.sceneNumber + "", (int) flap.position().x() + sprite.getWidth() - 25,
-						(int) flap.position().y() + 18);
-				g.drawString(flap.sceneTitle, (int) flap.position().x() + sprite.getWidth(), (int) flap.position().y());
+				g.drawString(clap.sceneNumber() + "", (int) clap.position().x() + sprite.getWidth() - 25,
+						(int) clap.position().y() + 18);
+				g.drawString(clap.sceneTitle(), (int) clap.position().x() + sprite.getWidth(), (int) clap.position().y());
 			});
 		}
 	}
