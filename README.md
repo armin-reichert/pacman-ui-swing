@@ -1,5 +1,7 @@
 ##  A JFC/Swing UI for the Pac-Man + Ms. Pac-Man games
 
+Note: Sound is not yet implemented after changing to event based sound handling.
+
 <details>
   <summary>Pac-Man Screens</summary
     
