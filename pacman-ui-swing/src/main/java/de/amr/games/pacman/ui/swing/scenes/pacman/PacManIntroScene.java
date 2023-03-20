@@ -134,7 +134,7 @@ public class PacManIntroScene extends GameScene {
 			drawGallery(g);
 			drawPoints(g, 11, 25);
 			r2D.drawCopyright(g, t(3), t(32));
-			if (Boolean.TRUE.equals(PacManIntroData.BLINKING.frame())) {
+			if (Boolean.TRUE.equals(intro.context().blinking.frame())) {
 				drawEnergizer(g);
 			}
 			int offset = intro.state().timer().tick() % 5 < 2 ? 0 : -1;
@@ -204,7 +204,7 @@ public class PacManIntroScene extends GameScene {
 	private void drawPoints(Graphics2D g, int tileX, int tileY) {
 		g.setColor(r2D.getFoodColor(1));
 		g.fillRect(t(tileX) + 6, t(tileY - 1) + 2, 2, 2);
-		if (Boolean.TRUE.equals(PacManIntroData.BLINKING.frame())) {
+		if (Boolean.TRUE.equals(intro.context().blinking.frame())) {
 			g.fillOval(t(tileX), t(tileY + 1) - 2, 10, 10);
 		}
 		g.setColor(Color.WHITE);
