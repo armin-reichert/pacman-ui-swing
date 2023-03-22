@@ -237,7 +237,7 @@ public class PacManGameUI implements GameEventListener {
 		case INTERMISSION -> {
 			var level = game.level();
 			if (level.isPresent()) {
-				yield scenes.get(2 + level.get().params().intermissionNumber());
+				yield scenes.get(2 + level.get().intermissionNumber);
 			}
 			throw new IllegalStateException("No game level is present");
 		}
