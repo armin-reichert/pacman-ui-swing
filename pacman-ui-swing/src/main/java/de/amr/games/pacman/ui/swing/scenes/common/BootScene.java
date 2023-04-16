@@ -132,7 +132,7 @@ public class BootScene extends GameScene {
 			gc.drawLine(0, row * cellSize, ArcadeWorld.SIZE_TILES.x() * TS, row * cellSize);
 		}
 		for (int col = 0; col <= numCols; ++col) {
-			gc.drawLine(col * cellSize, 0, col * cellSize, ArcadeWorld.SIZE_PX.y());
+			gc.drawLine(col * cellSize, 0, col * cellSize, ArcadeWorld.SIZE_TILES.y() * TS);
 		}
 	}
 }
