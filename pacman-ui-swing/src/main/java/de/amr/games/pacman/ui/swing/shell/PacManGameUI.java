@@ -133,7 +133,7 @@ public class PacManGameUI implements GameEventListener {
 	public PacManGameUI(GameLoop gameLoop, GameController controller, float height) {
 		this.gameLoop = gameLoop;
 		this.gameController = controller;
-		this.unscaledSize = ArcadeWorld.SIZE_TILES.scaled(World.TS);
+		this.unscaledSize = new Vector2i(ArcadeWorld.TILES_X * World.TS, ArcadeWorld.TILES_Y * World.TS);
 		this.scaling = height / unscaledSize.y();
 		this.scaledSize = new Vector2i(Math.round(scaling * unscaledSize.x()), Math.round(scaling * unscaledSize.y()));
 
