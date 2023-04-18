@@ -31,7 +31,7 @@ import de.amr.games.pacman.controller.common.GameController;
 import de.amr.games.pacman.event.GameEventListener;
 import de.amr.games.pacman.lib.math.Vector2i;
 import de.amr.games.pacman.model.common.GameModel;
-import de.amr.games.pacman.model.common.world.ArcadeWorld;
+import de.amr.games.pacman.model.common.world.World;
 import de.amr.games.pacman.ui.swing.rendering.common.Rendering2D;
 import de.amr.games.pacman.ui.swing.rendering.mspacman.SpritesheetMsPacMan;
 import de.amr.games.pacman.ui.swing.rendering.pacman.SpritesheetPacMan;
@@ -44,7 +44,7 @@ import de.amr.games.pacman.ui.swing.rendering.pacman.SpritesheetPacMan;
 public abstract class GameScene implements GameEventListener {
 
 	protected GameController gameController;
-	protected Vector2i size = new Vector2i(ArcadeWorld.TILES_X * TS, ArcadeWorld.TILES_Y * TS);
+	protected Vector2i size = new Vector2i(World.TILES_X * TS, World.TILES_Y * TS);
 	protected GameModel game;
 	protected Rendering2D r2D;
 

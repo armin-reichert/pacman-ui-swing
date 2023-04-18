@@ -46,7 +46,7 @@ import de.amr.games.pacman.model.common.actors.Bonus;
 import de.amr.games.pacman.model.common.actors.Entity;
 import de.amr.games.pacman.model.common.actors.Ghost;
 import de.amr.games.pacman.model.common.actors.Pac;
-import de.amr.games.pacman.model.common.world.ArcadeWorld;
+import de.amr.games.pacman.model.common.world.World;
 import de.amr.games.pacman.model.mspacman.MovingBonus;
 import de.amr.games.pacman.model.pacman.StaticBonus;
 
@@ -164,7 +164,7 @@ public interface Rendering2D {
 	default void drawCredit(Graphics2D g, int credit) {
 		g.setFont(getArcadeFont());
 		g.setColor(Color.WHITE);
-		g.drawString("CREDIT  %d".formatted(credit), t(2), t(ArcadeWorld.TILES_Y) - 2);
+		g.drawString("CREDIT  %d".formatted(credit), t(2), t(World.TILES_Y) - 2);
 	}
 
 	void drawCopyright(Graphics2D g, int x, int y);

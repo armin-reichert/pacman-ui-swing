@@ -55,7 +55,6 @@ import de.amr.games.pacman.event.GameEventListener;
 import de.amr.games.pacman.event.GameStateChangeEvent;
 import de.amr.games.pacman.event.SoundEvent;
 import de.amr.games.pacman.lib.math.Vector2i;
-import de.amr.games.pacman.model.common.world.ArcadeWorld;
 import de.amr.games.pacman.model.common.world.World;
 import de.amr.games.pacman.ui.swing.app.GameLoop;
 import de.amr.games.pacman.ui.swing.lib.Ujfc;
@@ -133,7 +132,7 @@ public class PacManGameUI implements GameEventListener {
 	public PacManGameUI(GameLoop gameLoop, GameController controller, float height) {
 		this.gameLoop = gameLoop;
 		this.gameController = controller;
-		this.unscaledSize = new Vector2i(ArcadeWorld.TILES_X * World.TS, ArcadeWorld.TILES_Y * World.TS);
+		this.unscaledSize = new Vector2i(World.TILES_X * World.TS, World.TILES_Y * World.TS);
 		this.scaling = height / unscaledSize.y();
 		this.scaledSize = new Vector2i(Math.round(scaling * unscaledSize.x()), Math.round(scaling * unscaledSize.y()));
 

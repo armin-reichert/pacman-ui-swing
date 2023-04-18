@@ -33,7 +33,7 @@ import java.awt.image.BufferedImage;
 import java.util.Random;
 
 import de.amr.games.pacman.model.common.GameVariant;
-import de.amr.games.pacman.model.common.world.ArcadeWorld;
+import de.amr.games.pacman.model.common.world.World;
 import de.amr.games.pacman.ui.swing.rendering.mspacman.SpritesheetMsPacMan;
 import de.amr.games.pacman.ui.swing.rendering.pacman.SpritesheetPacMan;
 
@@ -84,8 +84,8 @@ public class BootScene extends GameScene {
 		clearBuffer();
 		gc.setColor(new Color(222, 222, 255));
 		gc.setFont(SpritesheetPacMan.get().getArcadeFont());
-		for (int row = 0; row < ArcadeWorld.TILES_Y; ++row) {
-			for (int col = 0; col < ArcadeWorld.TILES_X; ++col) {
+		for (int row = 0; row < World.TILES_Y; ++row) {
+			for (int col = 0; col < World.TILES_X; ++col) {
 				var hexCode = Integer.toHexString(rnd.nextInt(16));
 				gc.drawString(hexCode, col * 8, row * 8 + 8);
 			}
@@ -100,8 +100,8 @@ public class BootScene extends GameScene {
 		var w = image.getWidth();
 		var h = image.getHeight();
 		var cellSize = 16;
-		var numRows = ArcadeWorld.TILES_Y / 2;
-		var numCols = ArcadeWorld.TILES_X / 2;
+		var numRows = World.TILES_Y / 2;
+		var numCols = World.TILES_X / 2;
 		for (int row = 0; row < numRows; ++row) {
 			if (rnd.nextInt(100) < 10) {
 				continue;
@@ -124,15 +124,15 @@ public class BootScene extends GameScene {
 	private void drawGrid() {
 		clearBuffer();
 		var cellSize = 16;
-		var numRows = ArcadeWorld.TILES_Y / 2;
-		var numCols = ArcadeWorld.TILES_X / 2;
+		var numRows = World.TILES_Y / 2;
+		var numCols = World.TILES_X / 2;
 		gc.setColor(new Color(222, 222, 255));
 		gc.setStroke(new BasicStroke(2));
 		for (int row = 0; row <= numRows; ++row) {
-			gc.drawLine(0, row * cellSize, ArcadeWorld.TILES_X * TS, row * cellSize);
+			gc.drawLine(0, row * cellSize, World.TILES_X * TS, row * cellSize);
 		}
 		for (int col = 0; col <= numCols; ++col) {
-			gc.drawLine(col * cellSize, 0, col * cellSize, ArcadeWorld.TILES_Y * TS);
+			gc.drawLine(col * cellSize, 0, col * cellSize, World.TILES_Y * TS);
 		}
 	}
 }
