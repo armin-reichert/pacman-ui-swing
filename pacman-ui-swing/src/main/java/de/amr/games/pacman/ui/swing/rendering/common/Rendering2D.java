@@ -25,7 +25,7 @@ package de.amr.games.pacman.ui.swing.rendering.common;
 
 import static de.amr.games.pacman.model.common.world.World.HTS;
 import static de.amr.games.pacman.model.common.world.World.TS;
-import static de.amr.games.pacman.model.common.world.World.t;
+import static de.amr.games.pacman.model.common.world.World.toPx;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -164,7 +164,7 @@ public interface Rendering2D {
 	default void drawCredit(Graphics2D g, int credit) {
 		g.setFont(getArcadeFont());
 		g.setColor(Color.WHITE);
-		g.drawString("CREDIT  %d".formatted(credit), t(2), t(World.TILES_Y) - 2);
+		g.drawString("CREDIT  %d".formatted(credit), toPx(2), toPx(World.TILES_Y) - 2);
 	}
 
 	void drawCopyright(Graphics2D g, int x, int y);
@@ -173,23 +173,23 @@ public interface Rendering2D {
 		g.setFont(getArcadeFont());
 		g.translate(0, 2);
 		g.setColor(new Color(222, 222, 255));
-		g.drawString("SCORE", t(1), t(1));
-		g.drawString("HIGH SCORE", t(15), t(1));
+		g.drawString("SCORE", toPx(1), toPx(1));
+		g.drawString("HIGH SCORE", toPx(15), toPx(1));
 		g.translate(0, 1);
 		if (showHiscoreOnly) {
-			g.drawString("00", t(6), t(2));
+			g.drawString("00", toPx(6), toPx(2));
 		} else {
 			game.score().ifPresent(score -> {
-				g.drawString(String.format("%7d", score.points()), t(1), t(2));
-				g.drawString(String.format("L%d", score.levelNumber()), t(9), t(2));
+				g.drawString(String.format("%7d", score.points()), toPx(1), toPx(2));
+				g.drawString(String.format("L%d", score.levelNumber()), toPx(9), toPx(2));
 			});
 		}
 		var highScore = game.highScore();
 		if (highScore.isPresent() && highScore.get().points() > 0) {
-			g.drawString(String.format("%7d", highScore.get().points()), t(15), t(2));
-			g.drawString(String.format("L%d", highScore.get().levelNumber()), t(23), t(2));
+			g.drawString(String.format("%7d", highScore.get().points()), toPx(15), toPx(2));
+			g.drawString(String.format("L%d", highScore.get().levelNumber()), toPx(23), toPx(2));
 		} else {
-			g.drawString("00", t(20), t(2));
+			g.drawString("00", toPx(20), toPx(2));
 		}
 		g.translate(0, -3);
 	}
@@ -199,24 +199,24 @@ public interface Rendering2D {
 		if (numLivesDisplayed <= 0) {
 			return;
 		}
-		int x = t(2);
-		int y = t(34);
+		int x = toPx(2);
+		int y = toPx(34);
 		int maxLivesDisplayed = 5;
 		for (int i = 0; i < Math.min(numLivesDisplayed, maxLivesDisplayed); ++i) {
-			g.drawImage(getLifeSprite(), x + t(2 * i), y, null);
+			g.drawImage(getLifeSprite(), x + toPx(2 * i), y, null);
 		}
 		if (numLivesDisplayed > maxLivesDisplayed) {
 			g.setColor(Color.YELLOW);
 			g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 6));
-			g.drawString("+" + (numLivesDisplayed - maxLivesDisplayed), x + t(10), y + t(1) - 2);
+			g.drawString("+" + (numLivesDisplayed - maxLivesDisplayed), x + toPx(10), y + toPx(1) - 2);
 		}
 	}
 
 	default void drawLevelCounter(Graphics2D g, List<Byte> levelCounter) {
-		int x = t(24);
+		int x = toPx(24);
 		for (var symbol : levelCounter) {
-			drawSprite(g, getBonusSymbolSprite(symbol), x, t(34));
-			x -= t(2);
+			drawSprite(g, getBonusSymbolSprite(symbol), x, toPx(34));
+			x -= toPx(2);
 		}
 	}
 
@@ -224,12 +224,12 @@ public interface Rendering2D {
 		if (gameState == GameState.READY) {
 			g.setFont(getArcadeFont());
 			g.setColor(Color.YELLOW);
-			g.drawString("READY!", t(11), t(21));
+			g.drawString("READY!", toPx(11), toPx(21));
 		} else if (gameState == GameState.GAME_OVER) {
 			g.setFont(getArcadeFont());
 			g.setColor(Color.RED);
-			g.drawString("GAME", t(9), t(21));
-			g.drawString("OVER", t(15), t(21));
+			g.drawString("GAME", toPx(9), toPx(21));
+			g.drawString("OVER", toPx(15), toPx(21));
 		}
 	}
 }

@@ -24,7 +24,7 @@ SOFTWARE.
 package de.amr.games.pacman.ui.swing.scenes.pacman;
 
 import static de.amr.games.pacman.model.common.world.World.TS;
-import static de.amr.games.pacman.model.common.world.World.t;
+import static de.amr.games.pacman.model.common.world.World.toPx;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -126,14 +126,14 @@ public class PacManIntroScene extends GameScene {
 			var timer = intro.state().timer();
 			if (timer.tick() > timer.secToTicks(1)) {
 				drawEnergizer(g);
-				r2D.drawCopyright(g, t(3), t(32));
+				r2D.drawCopyright(g, toPx(3), toPx(32));
 			}
 		}
 		case CHASING_PAC -> {
 			drawHUD(g);
 			drawGallery(g);
 			drawPoints(g, 11, 25);
-			r2D.drawCopyright(g, t(3), t(32));
+			r2D.drawCopyright(g, toPx(3), toPx(32));
 			if (Boolean.TRUE.equals(intro.context().blinking.frame())) {
 				drawEnergizer(g);
 			}
@@ -144,7 +144,7 @@ public class PacManIntroScene extends GameScene {
 			drawHUD(g);
 			drawGallery(g);
 			drawPoints(g, 11, 25);
-			r2D.drawCopyright(g, t(3), t(32));
+			r2D.drawCopyright(g, toPx(3), toPx(32));
 			drawGuys(g, 0);
 		}
 		case READY_TO_PLAY -> {
@@ -182,20 +182,20 @@ public class PacManIntroScene extends GameScene {
 	private void drawGallery(Graphics2D g) {
 		g.setColor(Color.WHITE);
 		g.setFont(r2D.getArcadeFont());
-		g.drawString("CHARACTER", t(6), t(6));
-		g.drawString("/", t(16), t(6));
-		g.drawString("NICKNAME", t(18), t(6));
+		g.drawString("CHARACTER", toPx(6), toPx(6));
+		g.drawString("/", toPx(16), toPx(6));
+		g.drawString("NICKNAME", toPx(18), toPx(6));
 		for (int id = 0; id < 4; ++id) {
 			if (ctx.pictureVisible[id]) {
 				int tileY = 7 + 3 * id;
-				r2D.drawSpriteCenteredOverBox(g, r2D.getGhostSprite(id, Direction.RIGHT), t(3), t(tileY));
+				r2D.drawSpriteCenteredOverBox(g, r2D.getGhostSprite(id, Direction.RIGHT), toPx(3), toPx(tileY));
 				if (ctx.characterVisible[id]) {
 					g.setColor(r2D.getGhostColor(id));
-					g.drawString("-" + PacManIntroData.CHARACTERS[id], t(6), t(tileY + 1));
+					g.drawString("-" + PacManIntroData.CHARACTERS[id], toPx(6), toPx(tileY + 1));
 				}
 				if (ctx.nicknameVisible[id]) {
 					g.setColor(r2D.getGhostColor(id));
-					g.drawString("\"" + intro.context().ghosts[id].name() + "\"", t(17), t(tileY + 1));
+					g.drawString("\"" + intro.context().ghosts[id].name() + "\"", toPx(17), toPx(tileY + 1));
 				}
 			}
 		}
@@ -203,21 +203,21 @@ public class PacManIntroScene extends GameScene {
 
 	private void drawPoints(Graphics2D g, int tileX, int tileY) {
 		g.setColor(r2D.getFoodColor(1));
-		g.fillRect(t(tileX) + 6, t(tileY - 1) + 2, 2, 2);
+		g.fillRect(toPx(tileX) + 6, toPx(tileY - 1) + 2, 2, 2);
 		if (Boolean.TRUE.equals(intro.context().blinking.frame())) {
-			g.fillOval(t(tileX), t(tileY + 1) - 2, 10, 10);
+			g.fillOval(toPx(tileX), toPx(tileY + 1) - 2, 10, 10);
 		}
 		g.setColor(Color.WHITE);
 		g.setFont(r2D.getArcadeFont());
-		g.drawString("10", t(tileX + 2), t(tileY));
-		g.drawString("50", t(tileX + 2), t(tileY + 2));
+		g.drawString("10", toPx(tileX + 2), toPx(tileY));
+		g.drawString("50", toPx(tileX + 2), toPx(tileY + 2));
 		g.setFont(r2D.getArcadeFont().deriveFont(6f));
-		g.drawString("PTS", t(tileX + 5), t(tileY));
-		g.drawString("PTS", t(tileX + 5), t(tileY + 2));
+		g.drawString("PTS", toPx(tileX + 5), toPx(tileY));
+		g.drawString("PTS", toPx(tileX + 5), toPx(tileY + 2));
 	}
 
 	private void drawEnergizer(Graphics2D g) {
 		g.setColor(r2D.getFoodColor(1));
-		g.fillOval(t(3), t(20), TS, TS);
+		g.fillOval(toPx(3), toPx(20), TS, TS);
 	}
 }

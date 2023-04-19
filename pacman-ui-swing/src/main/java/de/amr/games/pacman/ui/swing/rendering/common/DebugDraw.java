@@ -26,7 +26,7 @@ package de.amr.games.pacman.ui.swing.rendering.common;
 import static de.amr.games.pacman.lib.timer.TickTimer.ticksToString;
 import static de.amr.games.pacman.model.common.world.World.HTS;
 import static de.amr.games.pacman.model.common.world.World.TS;
-import static de.amr.games.pacman.model.common.world.World.t;
+import static de.amr.games.pacman.model.common.world.World.toPx;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -67,14 +67,14 @@ public class DebugDraw {
 			}
 			g.setColor(Color.WHITE);
 			g.setFont(new Font("Arial", Font.PLAIN, 6));
-			g.drawString(stateText, t(1), t(3));
+			g.drawString(stateText, toPx(1), toPx(3));
 			level.ghosts().forEach(ghost -> {
 				g.setColor(Color.WHITE);
 				g.drawRect((int) ghost.position().x(), (int) ghost.position().y(), TS, TS);
 				ghost.targetTile().ifPresent(targetTile -> {
 					Color c = ghostColors[ghost.id()];
 					g.setColor(c);
-					g.fillRect(t(targetTile.x()) + HTS / 2, t(targetTile.y()) + HTS / 2, HTS, HTS);
+					g.fillRect(toPx(targetTile.x()) + HTS / 2, toPx(targetTile.y()) + HTS / 2, HTS, HTS);
 					g.setStroke(new BasicStroke(0.5f));
 					Vector2f targetPosition = targetTile.scaled(TS).plus(HTS, HTS).toFloatVec();
 					g.drawLine((int) ghost.position().x(), (int) ghost.position().y(), (int) targetPosition.x(),
@@ -83,7 +83,7 @@ public class DebugDraw {
 			});
 			level.pac().targetTile().ifPresent(targetTile -> {
 				g.setColor(new Color(255, 255, 0, 200));
-				g.fillRect(t(targetTile.x()), t(targetTile.y()), TS, TS);
+				g.fillRect(toPx(targetTile.x()), toPx(targetTile.y()), TS, TS);
 			});
 		});
 	}
@@ -95,11 +95,11 @@ public class DebugDraw {
 				Vector2i tile = new Vector2i(x, y);
 				if (world.isIntersection(tile)) {
 					g.setColor(dark);
-					g.drawOval(t(x), t(y), TS, TS);
+					g.drawOval(toPx(x), toPx(y), TS, TS);
 				}
 				if (world.house().contains(tile)) {
 					g.setColor(new Color(100, 100, 100, 100));
-					g.fillRect(t(x) + 1, t(y) + 1, TS - 2, TS - 2);
+					g.fillRect(toPx(x) + 1, toPx(y) + 1, TS - 2, TS - 2);
 				}
 			}
 		}

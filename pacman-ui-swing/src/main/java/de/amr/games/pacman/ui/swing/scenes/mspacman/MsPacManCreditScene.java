@@ -24,7 +24,7 @@ SOFTWARE.
 
 package de.amr.games.pacman.ui.swing.scenes.mspacman;
 
-import static de.amr.games.pacman.model.common.world.World.t;
+import static de.amr.games.pacman.model.common.world.World.toPx;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -56,16 +56,16 @@ public class MsPacManCreditScene extends GameScene {
 
 		g.setFont(r2D.getArcadeFont());
 		g.setColor(r2D.getGhostColor(Ghost.ID_ORANGE_GHOST));
-		g.drawString("PUSH START BUTTON", t(6), t(16));
-		g.drawString("1 PLAYER ONLY", t(8), t(18));
-		g.drawString("ADDITIONAL    AT 10000", t(2), t(25));
+		g.drawString("PUSH START BUTTON", toPx(6), toPx(16));
+		g.drawString("1 PLAYER ONLY", toPx(8), toPx(18));
+		g.drawString("ADDITIONAL    AT 10000", toPx(2), toPx(25));
 		BufferedImage msPacMan = SpritesheetMsPacMan.get().rhs(1, 0);
-		r2D.drawSpriteCenteredOverBox(g, msPacMan, t(13) + World.HTS, t(24) - 2);
+		r2D.drawSpriteCenteredOverBox(g, msPacMan, toPx(13) + World.HTS, toPx(24) - 2);
 		g.setFont(r2D.getArcadeFont());
 		g.setFont(r2D.getArcadeFont().deriveFont(6.0f));
-		g.drawString("PTS", t(25), t(25));
+		g.drawString("PTS", toPx(25), toPx(25));
 
-		r2D.drawCopyright(g, t(6), t(28));
+		r2D.drawCopyright(g, toPx(6), toPx(28));
 		r2D.drawCredit(g, game.credit());
 	}
 

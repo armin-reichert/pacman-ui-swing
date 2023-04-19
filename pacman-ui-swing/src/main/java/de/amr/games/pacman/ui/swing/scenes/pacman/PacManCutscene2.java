@@ -25,7 +25,7 @@ SOFTWARE.
 package de.amr.games.pacman.ui.swing.scenes.pacman;
 
 import static de.amr.games.pacman.lib.math.Vector2i.v2i;
-import static de.amr.games.pacman.model.common.world.World.t;
+import static de.amr.games.pacman.model.common.world.World.toPx;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -124,7 +124,7 @@ public class PacManCutscene2 extends GameScene {
 	@Override
 	public void render(Graphics2D g) {
 		if (stretched != null) {
-			r2D.drawSprite(g, stretched.frame(), t(14), t(19) + 3);
+			r2D.drawSprite(g, stretched.frame(), toPx(14), toPx(19) + 3);
 		}
 		r2D.drawGhost(g, blinky);
 		r2D.drawPac(g, pac);
