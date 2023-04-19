@@ -97,7 +97,7 @@ public class DebugDraw {
 					g.setColor(dark);
 					g.drawOval(t(x), t(y), TS, TS);
 				}
-				if (world.houseContains(tile)) {
+				if (world.house().contains(tile)) {
 					g.setColor(new Color(100, 100, 100, 100));
 					g.fillRect(t(x) + 1, t(y) + 1, TS - 2, TS - 2);
 				}
