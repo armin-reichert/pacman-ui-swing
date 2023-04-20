@@ -23,7 +23,7 @@ SOFTWARE.
  */
 package de.amr.games.pacman.ui.swing.rendering.mspacman;
 
-import static de.amr.games.pacman.model.common.world.World.toPx;
+import static de.amr.games.pacman.lib.Globals.TS;
 import static de.amr.games.pacman.ui.swing.lib.Ujfc.font;
 import static de.amr.games.pacman.ui.swing.lib.Ujfc.image;
 
@@ -321,10 +321,10 @@ public class SpritesheetMsPacMan implements Rendering2D {
 		g.drawImage(midwayLogo, x, y + 3, 30, 32, null);
 		g.setColor(Color.RED);
 		g.setFont(new Font("Dialog", Font.PLAIN, 11));
-		g.drawString("\u00a9", x + toPx(5), y + toPx(2) + 2); // (c) symbol
+		g.drawString("\u00a9", x + TS * (5), y + TS * (2) + 2); // (c) symbol
 		g.setFont(getArcadeFont());
-		g.drawString("MIDWAY MFG CO", x + toPx(7), y + toPx(2));
-		g.drawString("1980/1981", x + toPx(8), y + toPx(4));
+		g.drawString("MIDWAY MFG CO", x + TS * (7), y + TS * (2));
+		g.drawString("1980/1981", x + TS * (8), y + TS * (4));
 	}
 
 	public void drawClapperboard(Graphics2D g, Clapperboard clap) {

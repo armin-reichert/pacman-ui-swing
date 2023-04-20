@@ -25,6 +25,7 @@ package de.amr.games.pacman.ui.swing.shell;
 
 import static de.amr.games.pacman.controller.common.GameState.CREDIT;
 import static de.amr.games.pacman.controller.common.GameState.INTRO;
+import static de.amr.games.pacman.lib.Globals.TS;
 import static de.amr.games.pacman.model.common.GameVariant.MS_PACMAN;
 import static de.amr.games.pacman.ui.swing.shell.Keyboard.MOD_CTRL;
 import static de.amr.games.pacman.ui.swing.shell.Keyboard.MOD_SHIFT;
@@ -132,7 +133,7 @@ public class PacManGameUI implements GameEventListener {
 	public PacManGameUI(GameLoop gameLoop, GameController controller, float height) {
 		this.gameLoop = gameLoop;
 		this.gameController = controller;
-		this.unscaledSize = new Vector2i(World.TILES_X * World.TS, World.TILES_Y * World.TS);
+		this.unscaledSize = new Vector2i(World.TILES_X * TS, World.TILES_Y * TS);
 		this.scaling = height / unscaledSize.y();
 		this.scaledSize = new Vector2i(Math.round(scaling * unscaledSize.x()), Math.round(scaling * unscaledSize.y()));
 

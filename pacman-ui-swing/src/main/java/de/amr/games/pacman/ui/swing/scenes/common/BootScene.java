@@ -24,7 +24,7 @@ SOFTWARE.
 
 package de.amr.games.pacman.ui.swing.scenes.common;
 
-import static de.amr.games.pacman.model.common.world.World.TS;
+import static de.amr.games.pacman.lib.Globals.*;
 
 import java.awt.BasicStroke;
 import java.awt.Color;

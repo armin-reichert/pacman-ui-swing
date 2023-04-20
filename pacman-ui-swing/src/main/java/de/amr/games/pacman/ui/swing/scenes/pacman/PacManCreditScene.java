@@ -24,7 +24,7 @@ SOFTWARE.
 
 package de.amr.games.pacman.ui.swing.scenes.pacman;
 
-import static de.amr.games.pacman.model.common.world.World.toPx;
+import static de.amr.games.pacman.lib.Globals.TS;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -52,12 +52,12 @@ public class PacManCreditScene extends GameScene {
 		r2D.drawScores(g, game, true);
 		var arcade8 = r2D.getArcadeFont();
 		var arcade6 = arcade8.deriveFont(6f);
-		r2D.drawText(g, "PUSH START BUTTON", r2D.getGhostColor(Ghost.ID_ORANGE_GHOST), arcade8, toPx(6), toPx(17));
-		r2D.drawText(g, "1 PLAYER ONLY", r2D.getGhostColor(Ghost.ID_CYAN_GHOST), arcade8, toPx(8), toPx(21));
-		r2D.drawText(g, "1 PLAYER ONLY", r2D.getGhostColor(Ghost.ID_CYAN_GHOST), arcade8, toPx(8), toPx(21));
-		r2D.drawText(g, "BONUS PAC-MAN FOR 10000", new Color(255, 184, 174), arcade8, toPx(1), toPx(25));
-		r2D.drawText(g, "PTS", new Color(255, 184, 174), arcade6, toPx(25), toPx(25));
-		r2D.drawCopyright(g, toPx(4), toPx(29));
+		r2D.drawText(g, "PUSH START BUTTON", r2D.getGhostColor(Ghost.ID_ORANGE_GHOST), arcade8, TS * (6), TS * (17));
+		r2D.drawText(g, "1 PLAYER ONLY", r2D.getGhostColor(Ghost.ID_CYAN_GHOST), arcade8, TS * (8), TS * (21));
+		r2D.drawText(g, "1 PLAYER ONLY", r2D.getGhostColor(Ghost.ID_CYAN_GHOST), arcade8, TS * (8), TS * (21));
+		r2D.drawText(g, "BONUS PAC-MAN FOR 10000", new Color(255, 184, 174), arcade8, TS * (1), TS * (25));
+		r2D.drawText(g, "PTS", new Color(255, 184, 174), arcade6, TS * (25), TS * (25));
+		r2D.drawCopyright(g, TS * (4), TS * (29));
 		r2D.drawCredit(g, game.credit());
 		r2D.drawLevelCounter(g, game.levelCounter());
 	}

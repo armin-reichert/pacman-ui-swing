@@ -23,7 +23,7 @@ SOFTWARE.
  */
 package de.amr.games.pacman.ui.swing.scenes.common;
 
-import static de.amr.games.pacman.model.common.world.World.toPx;
+import static de.amr.games.pacman.lib.Globals.TS;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -80,9 +80,9 @@ public class PlayScene extends GameScene {
 	private void drawMaze(Graphics2D g, World world, int mazeNumber) {
 		var flashing = world.animation(GameModel.AK_MAZE_FLASHING);
 		if (flashing.isPresent() && flashing.get().isRunning()) {
-			g.drawImage((Image) flashing.get().frame(), 0, toPx(3), null);
+			g.drawImage((Image) flashing.get().frame(), 0, TS * (3), null);
 		} else {
-			r2D.drawFullMaze(g, mazeNumber, 0, toPx(3));
+			r2D.drawFullMaze(g, mazeNumber, 0, TS * (3));
 			var energizerPulse = world.animation(GameModel.AK_MAZE_ENERGIZER_BLINKING);
 			if (energizerPulse.isPresent()) {
 				boolean dark = !(boolean) energizerPulse.get().frame();
