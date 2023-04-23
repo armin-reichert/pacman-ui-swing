@@ -32,8 +32,8 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
-import de.amr.games.pacman.model.common.GameVariant;
-import de.amr.games.pacman.model.common.world.World;
+import de.amr.games.pacman.model.GameVariant;
+import de.amr.games.pacman.model.world.World;
 import de.amr.games.pacman.ui.swing.rendering.mspacman.SpritesheetMsPacMan;
 import de.amr.games.pacman.ui.swing.rendering.pacman.SpritesheetPacMan;
 

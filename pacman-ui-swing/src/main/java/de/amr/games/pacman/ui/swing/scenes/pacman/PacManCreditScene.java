@@ -29,7 +29,7 @@ import static de.amr.games.pacman.lib.Globals.TS;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
-import de.amr.games.pacman.model.common.actors.Ghost;
+import de.amr.games.pacman.model.actors.Ghost;
 import de.amr.games.pacman.ui.swing.scenes.common.GameScene;
 import de.amr.games.pacman.ui.swing.shell.Keyboard;
 

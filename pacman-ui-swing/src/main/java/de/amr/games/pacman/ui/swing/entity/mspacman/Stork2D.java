@@ -27,7 +27,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 import de.amr.games.pacman.lib.anim.SimpleAnimation;
-import de.amr.games.pacman.model.common.actors.Entity;
+import de.amr.games.pacman.model.actors.Entity;
 import de.amr.games.pacman.ui.swing.rendering.common.Rendering2D;
 import de.amr.games.pacman.ui.swing.rendering.mspacman.SpritesheetMsPacMan;
 

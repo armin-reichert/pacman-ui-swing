@@ -35,7 +35,7 @@ import de.amr.games.pacman.controller.mspacman.MsPacManIntroController;
 import de.amr.games.pacman.controller.mspacman.MsPacManIntroData;
 import de.amr.games.pacman.controller.mspacman.MsPacManIntroState;
 import de.amr.games.pacman.lib.anim.AnimationMap;
-import de.amr.games.pacman.model.common.actors.Ghost;
+import de.amr.games.pacman.model.actors.Ghost;
 import de.amr.games.pacman.ui.swing.rendering.common.GhostAnimations;
 import de.amr.games.pacman.ui.swing.rendering.common.PacAnimations;
 import de.amr.games.pacman.ui.swing.scenes.common.GameScene;

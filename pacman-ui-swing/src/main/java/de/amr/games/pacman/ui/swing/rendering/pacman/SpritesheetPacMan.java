@@ -41,8 +41,8 @@ import de.amr.games.pacman.lib.anim.AnimationByDirection;
 import de.amr.games.pacman.lib.anim.FrameSequence;
 import de.amr.games.pacman.lib.anim.SimpleAnimation;
 import de.amr.games.pacman.lib.steering.Direction;
-import de.amr.games.pacman.model.common.actors.Ghost;
-import de.amr.games.pacman.model.common.actors.Pac;
+import de.amr.games.pacman.model.actors.Ghost;
+import de.amr.games.pacman.model.actors.Pac;
 import de.amr.games.pacman.ui.swing.lib.Spritesheet;
 import de.amr.games.pacman.ui.swing.rendering.common.Rendering2D;
 

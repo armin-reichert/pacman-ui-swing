@@ -36,7 +36,7 @@ import de.amr.games.pacman.controller.common.GameController;
 import de.amr.games.pacman.controller.common.GameState;
 import de.amr.games.pacman.lib.math.Vector2f;
 import de.amr.games.pacman.lib.math.Vector2i;
-import de.amr.games.pacman.model.common.world.World;
+import de.amr.games.pacman.model.world.World;
 
 /**
  * @author Armin Reichert

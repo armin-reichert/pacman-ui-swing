@@ -40,14 +40,14 @@ import de.amr.games.pacman.lib.anim.FrameSequence;
 import de.amr.games.pacman.lib.anim.SimpleAnimation;
 import de.amr.games.pacman.lib.math.Vector2i;
 import de.amr.games.pacman.lib.steering.Direction;
-import de.amr.games.pacman.model.common.GameModel;
-import de.amr.games.pacman.model.common.actors.Bonus;
-import de.amr.games.pacman.model.common.actors.Entity;
-import de.amr.games.pacman.model.common.actors.Ghost;
-import de.amr.games.pacman.model.common.actors.Pac;
-import de.amr.games.pacman.model.common.world.World;
-import de.amr.games.pacman.model.mspacman.MovingBonus;
-import de.amr.games.pacman.model.pacman.StaticBonus;
+import de.amr.games.pacman.model.GameModel;
+import de.amr.games.pacman.model.actors.Bonus;
+import de.amr.games.pacman.model.actors.Entity;
+import de.amr.games.pacman.model.actors.Ghost;
+import de.amr.games.pacman.model.actors.MovingBonus;
+import de.amr.games.pacman.model.actors.Pac;
+import de.amr.games.pacman.model.actors.StaticBonus;
+import de.amr.games.pacman.model.world.World;
 
 /**
  * Spritesheet-based rendering for Pac-Man and Ms. Pac-Man game.

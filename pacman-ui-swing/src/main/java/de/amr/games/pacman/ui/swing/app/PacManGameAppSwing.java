@@ -31,7 +31,7 @@ import de.amr.games.pacman.controller.common.GameController;
 import de.amr.games.pacman.event.GameEvents;
 import de.amr.games.pacman.lib.option.Option;
 import de.amr.games.pacman.lib.option.OptionParser;
-import de.amr.games.pacman.model.common.GameVariant;
+import de.amr.games.pacman.model.GameVariant;
 import de.amr.games.pacman.ui.swing.shell.KeyboardSteering;
 import de.amr.games.pacman.ui.swing.shell.PacManGameUI;
 

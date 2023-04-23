@@ -26,8 +26,8 @@ package de.amr.games.pacman.ui.swing.rendering.common;
 
 import de.amr.games.pacman.lib.anim.Animated;
 import de.amr.games.pacman.lib.anim.AnimationMap;
-import de.amr.games.pacman.model.common.GameModel;
-import de.amr.games.pacman.model.common.actors.Pac;
+import de.amr.games.pacman.model.GameModel;
+import de.amr.games.pacman.model.actors.Pac;
 
 /**
  * @author Armin Reichert

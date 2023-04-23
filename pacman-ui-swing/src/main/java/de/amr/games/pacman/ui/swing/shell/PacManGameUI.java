@@ -26,7 +26,7 @@ package de.amr.games.pacman.ui.swing.shell;
 import static de.amr.games.pacman.controller.common.GameState.CREDIT;
 import static de.amr.games.pacman.controller.common.GameState.INTRO;
 import static de.amr.games.pacman.lib.Globals.TS;
-import static de.amr.games.pacman.model.common.GameVariant.MS_PACMAN;
+import static de.amr.games.pacman.model.GameVariant.MS_PACMAN;
 import static de.amr.games.pacman.ui.swing.shell.Keyboard.MOD_CTRL;
 import static de.amr.games.pacman.ui.swing.shell.Keyboard.MOD_SHIFT;
 
@@ -56,7 +56,7 @@ import de.amr.games.pacman.event.GameEventListener;
 import de.amr.games.pacman.event.GameStateChangeEvent;
 import de.amr.games.pacman.event.SoundEvent;
 import de.amr.games.pacman.lib.math.Vector2i;
-import de.amr.games.pacman.model.common.world.World;
+import de.amr.games.pacman.model.world.World;
 import de.amr.games.pacman.ui.swing.app.GameLoop;
 import de.amr.games.pacman.ui.swing.lib.Ujfc;
 import de.amr.games.pacman.ui.swing.rendering.common.GhostAnimations;

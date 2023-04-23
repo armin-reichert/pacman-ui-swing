@@ -30,9 +30,9 @@ import java.awt.Image;
 
 import de.amr.games.pacman.controller.common.GameState;
 import de.amr.games.pacman.event.GameStateChangeEvent;
-import de.amr.games.pacman.model.common.GameModel;
-import de.amr.games.pacman.model.common.actors.Ghost;
-import de.amr.games.pacman.model.common.world.World;
+import de.amr.games.pacman.model.GameModel;
+import de.amr.games.pacman.model.actors.Ghost;
+import de.amr.games.pacman.model.world.World;
 import de.amr.games.pacman.ui.swing.rendering.common.DebugDraw;
 import de.amr.games.pacman.ui.swing.shell.Keyboard;
 import de.amr.games.pacman.ui.swing.shell.PacManGameUI;

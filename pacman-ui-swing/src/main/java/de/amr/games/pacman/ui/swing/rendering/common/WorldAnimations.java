@@ -26,7 +26,7 @@ package de.amr.games.pacman.ui.swing.rendering.common;
 
 import de.amr.games.pacman.lib.anim.AnimationMap;
 import de.amr.games.pacman.lib.anim.Pulse;
-import de.amr.games.pacman.model.common.GameModel;
+import de.amr.games.pacman.model.GameModel;
 
 /**
  * @author Armin Reichert
