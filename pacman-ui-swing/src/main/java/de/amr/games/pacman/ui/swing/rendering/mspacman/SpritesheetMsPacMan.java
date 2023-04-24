@@ -336,9 +336,8 @@ public class SpritesheetMsPacMan implements Rendering2D {
 				}
 				g.setFont(getArcadeFont());
 				g.setColor(new Color(222, 222, 255));
-				g.drawString(clap.sceneNumber() + "", (int) clap.position().x() + sprite.getWidth() - 25,
-						(int) clap.position().y() + 18);
-				g.drawString(clap.sceneTitle(), (int) clap.position().x() + sprite.getWidth(), (int) clap.position().y());
+				g.drawString(clap.number(), (int) clap.position().x() + sprite.getWidth() - 25, (int) clap.position().y() + 18);
+				g.drawString(clap.text(), (int) clap.position().x() + sprite.getWidth(), (int) clap.position().y());
 			});
 		}
 	}
