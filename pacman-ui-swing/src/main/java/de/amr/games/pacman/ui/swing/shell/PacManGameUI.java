@@ -46,8 +46,7 @@ import javax.swing.JFrame;
 import javax.swing.Timer;
 import javax.swing.WindowConstants;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.tinylog.Logger;
 
 import de.amr.games.pacman.controller.GameController;
 import de.amr.games.pacman.controller.GameState;
@@ -84,8 +83,6 @@ import de.amr.games.pacman.ui.swing.scenes.pacman.PacManIntroScene;
  * @author Armin Reichert
  */
 public class PacManGameUI implements GameEventListener {
-
-	private static final Logger LOG = LogManager.getFormatterLogger();
 
 	private static boolean debugDraw = false;
 
@@ -209,7 +206,7 @@ public class PacManGameUI implements GameEventListener {
 
 	@Override
 	public void onSoundEvent(SoundEvent e) {
-		LOG.info("Received %s", e);
+		Logger.info("Received {}", e);
 	}
 
 	private void updateGameScene(GameState gameState, boolean forced) {
@@ -223,7 +220,7 @@ public class PacManGameUI implements GameEventListener {
 			}
 			newGameScene.setContext(gameController);
 			newGameScene.init();
-			LOG.info("Current scene changed from %s to %s", currentGameScene, newGameScene);
+			Logger.info("Current scene changed from {} to {}", currentGameScene, newGameScene);
 		}
 		currentGameScene = newGameScene;
 	}
@@ -303,7 +300,7 @@ public class PacManGameUI implements GameEventListener {
 
 		else if (Keyboard.keyPressed(MOD_CTRL, "D")) {
 			toggleDebugDraw();
-			LOG.info("UI debug mode is %s", debugDraw ? "on" : "off");
+			Logger.info("UI debug mode is {}", debugDraw ? "on" : "off");
 		}
 
 		else if (Keyboard.keyPressed("E")) {
@@ -335,7 +332,7 @@ public class PacManGameUI implements GameEventListener {
 			int fps = gameLoop.clock.getTargetFPS() + 10;
 			gameLoop.clock.setTargetFPS(fps);
 			showFlashMessage(2, "Target FPS set to %s Hz", fps);
-			LOG.info("Clock frequency changed to %d Hz", gameLoop.clock.getTargetFPS());
+			Logger.info("Clock frequency changed to {} Hz", gameLoop.clock.getTargetFPS());
 		}
 
 		else if (Keyboard.keyPressed(MOD_CTRL | MOD_SHIFT, "S")) {
@@ -343,7 +340,7 @@ public class PacManGameUI implements GameEventListener {
 			fps = Math.max(10, fps);
 			gameLoop.clock.setTargetFPS(fps);
 			showFlashMessage(2, "Target FPS set to %s Hz", fps);
-			LOG.info("Clock frequency changed to %d Hz", gameLoop.clock.getTargetFPS());
+			Logger.info("Clock frequency changed to {} Hz", gameLoop.clock.getTargetFPS());
 		}
 
 		else if (Keyboard.keyPressed("V")) {

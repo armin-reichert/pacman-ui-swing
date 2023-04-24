@@ -33,15 +33,12 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.tinylog.Logger;
 
 /**
  * @author Armin Reichert
  */
 public class GameSounds {
-
-	private static final Logger LOG = LogManager.getFormatterLogger();
 
 	protected final Map<GameSound, Clip> clips = new EnumMap<>(GameSound.class);
 	protected boolean muted;
@@ -142,7 +139,7 @@ public class GameSounds {
 		default -> throw new GameSoundException("Illegal siren index: %d", sirenIndex);
 		};
 		loop(siren, Clip.LOOP_CONTINUOUSLY);
-		LOG.info("Siren %s started", siren);
+		Logger.info("Siren {} started", siren);
 	}
 
 	public Stream<GameSound> sirens() {
@@ -159,7 +156,7 @@ public class GameSounds {
 		sirens().forEach(siren -> {
 			if (isPlaying(siren)) {
 				getClip(siren).stop();
-				LOG.info("Siren %s stopped", siren);
+				Logger.info("Siren {} stopped", siren);
 			}
 		});
 	}

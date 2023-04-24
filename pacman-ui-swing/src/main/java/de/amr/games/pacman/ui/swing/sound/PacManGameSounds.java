@@ -24,15 +24,12 @@ SOFTWARE.
 
 package de.amr.games.pacman.ui.swing.sound;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.tinylog.Logger;
 
 /**
  * @author Armin Reichert
  */
 public class PacManGameSounds extends GameSounds {
-
-	private static final Logger LOG = LogManager.getFormatterLogger();
 
 	public PacManGameSounds() {
 		//@formatter:off
@@ -51,6 +48,6 @@ public class PacManGameSounds extends GameSounds {
 		put(clips, GameSound.SIREN_3,         "/pacman/sound/siren_3.wav");
 		put(clips, GameSound.SIREN_4,         "/pacman/sound/siren_4.wav");
 		//@formatter:on
-		LOG.info("Pac-Man audio clips loaded");
+		Logger.info("Pac-Man audio clips loaded");
 	}
 }
