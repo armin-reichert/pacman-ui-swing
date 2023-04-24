@@ -34,7 +34,7 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
-import de.amr.games.pacman.controller.common.GameState;
+import de.amr.games.pacman.controller.GameState;
 import de.amr.games.pacman.lib.anim.AnimationByDirection;
 import de.amr.games.pacman.lib.anim.FrameSequence;
 import de.amr.games.pacman.lib.anim.SimpleAnimation;

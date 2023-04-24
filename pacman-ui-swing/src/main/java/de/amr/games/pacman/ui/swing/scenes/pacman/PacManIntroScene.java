@@ -29,10 +29,10 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.util.stream.Stream;
 
-import de.amr.games.pacman.controller.common.GameController;
-import de.amr.games.pacman.controller.pacman.PacManIntroController;
-import de.amr.games.pacman.controller.pacman.PacManIntroData;
-import de.amr.games.pacman.controller.pacman.PacManIntroState;
+import de.amr.games.pacman.controller.GameController;
+import de.amr.games.pacman.controller.PacManIntroController;
+import de.amr.games.pacman.controller.PacManIntroData;
+import de.amr.games.pacman.controller.PacManIntroState;
 import de.amr.games.pacman.lib.anim.AnimationMap;
 import de.amr.games.pacman.lib.steering.Direction;
 import de.amr.games.pacman.model.GameModel;

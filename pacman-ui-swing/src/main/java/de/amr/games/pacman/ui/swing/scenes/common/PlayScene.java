@@ -28,7 +28,7 @@ import static de.amr.games.pacman.lib.Globals.TS;
 import java.awt.Graphics2D;
 import java.awt.Image;
 
-import de.amr.games.pacman.controller.common.GameState;
+import de.amr.games.pacman.controller.GameState;
 import de.amr.games.pacman.event.GameStateChangeEvent;
 import de.amr.games.pacman.model.GameModel;
 import de.amr.games.pacman.model.actors.Ghost;

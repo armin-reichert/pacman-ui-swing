@@ -23,17 +23,17 @@ SOFTWARE.
  */
 package de.amr.games.pacman.ui.swing.scenes.mspacman;
 
-import static de.amr.games.pacman.controller.mspacman.MsPacManIntroData.BLINKY_END_TILE;
-import static de.amr.games.pacman.controller.mspacman.MsPacManIntroData.TITLE_TILE;
+import static de.amr.games.pacman.controller.MsPacManIntroData.BLINKY_END_TILE;
+import static de.amr.games.pacman.controller.MsPacManIntroData.TITLE_TILE;
 import static de.amr.games.pacman.lib.Globals.TS;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
 
-import de.amr.games.pacman.controller.common.GameController;
-import de.amr.games.pacman.controller.mspacman.MsPacManIntroController;
-import de.amr.games.pacman.controller.mspacman.MsPacManIntroData;
-import de.amr.games.pacman.controller.mspacman.MsPacManIntroState;
+import de.amr.games.pacman.controller.GameController;
+import de.amr.games.pacman.controller.MsPacManIntroController;
+import de.amr.games.pacman.controller.MsPacManIntroData;
+import de.amr.games.pacman.controller.MsPacManIntroState;
 import de.amr.games.pacman.lib.anim.AnimationMap;
 import de.amr.games.pacman.model.actors.Ghost;
 import de.amr.games.pacman.ui.swing.rendering.common.GhostAnimations;

@@ -23,8 +23,8 @@ SOFTWARE.
  */
 package de.amr.games.pacman.ui.swing.shell;
 
-import static de.amr.games.pacman.controller.common.GameState.CREDIT;
-import static de.amr.games.pacman.controller.common.GameState.INTRO;
+import static de.amr.games.pacman.controller.GameState.CREDIT;
+import static de.amr.games.pacman.controller.GameState.INTRO;
 import static de.amr.games.pacman.lib.Globals.TS;
 import static de.amr.games.pacman.model.GameVariant.MS_PACMAN;
 import static de.amr.games.pacman.ui.swing.shell.Keyboard.MOD_CTRL;
@@ -49,8 +49,8 @@ import javax.swing.WindowConstants;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import de.amr.games.pacman.controller.common.GameController;
-import de.amr.games.pacman.controller.common.GameState;
+import de.amr.games.pacman.controller.GameController;
+import de.amr.games.pacman.controller.GameState;
 import de.amr.games.pacman.event.GameEvent;
 import de.amr.games.pacman.event.GameEventListener;
 import de.amr.games.pacman.event.GameStateChangeEvent;

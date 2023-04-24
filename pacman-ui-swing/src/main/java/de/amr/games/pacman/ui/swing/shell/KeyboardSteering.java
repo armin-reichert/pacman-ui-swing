@@ -23,7 +23,7 @@ SOFTWARE.
  */
 package de.amr.games.pacman.ui.swing.shell;
 
-import de.amr.games.pacman.controller.common.Steering;
+import de.amr.games.pacman.controller.Steering;
 import de.amr.games.pacman.lib.steering.Direction;
 import de.amr.games.pacman.model.GameLevel;
 import de.amr.games.pacman.model.actors.Creature;
