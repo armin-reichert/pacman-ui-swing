@@ -82,7 +82,7 @@ public class MsPacManIntroScene extends GameScene {
 	public void render(Graphics2D g) {
 		r2D.drawScores(g, gameController.game(), true);
 		drawTitle(g);
-		drawLights(g, 32, 16);
+		drawMarquee(g);
 		if (sceneController.state() == MsPacManIntroState.GHOSTS) {
 			drawGhostText(g);
 		} else if (sceneController.state() == MsPacManIntroState.MSPACMAN
@@ -95,6 +95,22 @@ public class MsPacManIntroScene extends GameScene {
 		r2D.drawCredit(g, game.credit());
 		if (game.hasCredit()) {
 			r2D.drawLevelCounter(g, game.levelCounter());
+		}
+	}
+
+	private void drawMarquee(Graphics2D g) {
+		var on = ctx.marqueeState();
+		for (int i = 0; i < ctx.numBulbs; ++i) {
+			g.setColor(on.get(i) ? new Color(222, 222, 255) : Color.RED);
+			if (i <= 33) {
+				g.fillRect(60 + 4 * i, 148, 2, 2);
+			} else if (i <= 48) {
+				g.fillRect(192, 280 - 4 * i, 2, 2);
+			} else if (i <= 81) {
+				g.fillRect(384 - 4 * i, 88, 2, 2);
+			} else {
+				g.fillRect(60, 4 * i - 236, 2, 2);
+			}
 		}
 	}
 
@@ -129,27 +145,4 @@ public class MsPacManIntroScene extends GameScene {
 		g.drawString("MS PAC-MAN", tx, y0 + TS * 6);
 	}
 
-	private void drawLights(Graphics2D g, int numDotsX, int numDotsY) {
-		var x0 = sceneController.context().stopX;
-		var y0 = sceneController.context().stopY;
-		long time = ctx.marqueeTimer.tick();
-		int light = (int) (time / 2) % (numDotsX / 2);
-		for (int dot = 0; dot < 2 * (numDotsX + numDotsY); ++dot) {
-			int x = 0;
-			int y = 0;
-			if (dot <= numDotsX) {
-				x = dot;
-			} else if (dot < numDotsX + numDotsY) {
-				x = numDotsX;
-				y = dot - numDotsX;
-			} else if (dot < 2 * numDotsX + numDotsY + 1) {
-				x = 2 * numDotsX + numDotsY - dot;
-				y = numDotsY;
-			} else {
-				y = 2 * (numDotsX + numDotsY) - dot;
-			}
-			g.setColor((dot + light) % (numDotsX / 2) == 0 ? Color.PINK : Color.RED);
-			g.fillRect((int) x0 + 4 * x, (int) y0 + 4 * y, 2, 2);
-		}
-	}
 }
