@@ -23,8 +23,6 @@ SOFTWARE.
  */
 package de.amr.games.pacman.ui.swing.scenes.mspacman;
 
-import static de.amr.games.pacman.controller.MsPacManIntroData.BLINKY_END_TILE;
-import static de.amr.games.pacman.controller.MsPacManIntroData.TITLE_TILE;
 import static de.amr.games.pacman.lib.Globals.TS;
 
 import java.awt.Color;
@@ -101,32 +99,40 @@ public class MsPacManIntroScene extends GameScene {
 	}
 
 	private void drawTitle(Graphics2D g) {
+		var tx = sceneController.context().titlePosition.x();
+		var ty = sceneController.context().titlePosition.y();
 		g.setFont(r2D.getArcadeFont());
 		g.setColor(Color.ORANGE);
-		g.drawString("\"MS PAC-MAN\"", TITLE_TILE.x(), TITLE_TILE.y());
+		g.drawString("\"MS PAC-MAN\"", tx, ty);
 	}
 
 	private void drawGhostText(Graphics2D g) {
+		var tx = sceneController.context().titlePosition.x();
+		var y0 = sceneController.context().blinkyEndPosition.y();
 		g.setColor(Color.WHITE);
 		g.setFont(r2D.getArcadeFont());
 		if (ctx.ghostIndex() == 0) {
-			g.drawString("WITH", TITLE_TILE.x(), BLINKY_END_TILE.y() + TS * (3));
+			g.drawString("WITH", tx, y0 + TS * 3);
 		}
 		Ghost ghost = ctx.ghosts.get(ctx.ghostIndex());
 		g.setColor(r2D.getGhostColor(ghost.id()));
-		g.drawString(ghost.name().toUpperCase(), TS * (14 - ghost.name().length() / 2), BLINKY_END_TILE.y() + TS * (6));
+		g.drawString(ghost.name().toUpperCase(), TS * (14 - ghost.name().length() / 2), y0 + TS * 6);
 	}
 
 	private void drawMsPacManText(Graphics2D g) {
+		var tx = sceneController.context().titlePosition.x();
+		var y0 = sceneController.context().blinkyEndPosition.y();
 		g.setColor(Color.WHITE);
 		g.setFont(r2D.getArcadeFont());
-		g.drawString("STARRING", TITLE_TILE.x(), BLINKY_END_TILE.y() + TS * (3));
+		g.drawString("STARRING", tx, y0 + TS * 3);
 		g.setColor(Color.YELLOW);
-		g.drawString("MS PAC-MAN", TITLE_TILE.x(), BLINKY_END_TILE.y() + TS * (6));
+		g.drawString("MS PAC-MAN", tx, y0 + TS * 6);
 	}
 
 	private void drawLights(Graphics2D g, int numDotsX, int numDotsY) {
-		long time = ctx.lightsTimer.tick();
+		var x0 = sceneController.context().blinkyEndPosition.x();
+		var y0 = sceneController.context().blinkyEndPosition.y();
+		long time = ctx.marqueeTimer.tick();
 		int light = (int) (time / 2) % (numDotsX / 2);
 		for (int dot = 0; dot < 2 * (numDotsX + numDotsY); ++dot) {
 			int x = 0;
@@ -143,7 +149,7 @@ public class MsPacManIntroScene extends GameScene {
 				y = 2 * (numDotsX + numDotsY) - dot;
 			}
 			g.setColor((dot + light) % (numDotsX / 2) == 0 ? Color.PINK : Color.RED);
-			g.fillRect(BLINKY_END_TILE.x() + 4 * x, BLINKY_END_TILE.y() + 4 * y, 2, 2);
+			g.fillRect((int) x0 + 4 * x, (int) y0 + 4 * y, 2, 2);
 		}
 	}
 }
