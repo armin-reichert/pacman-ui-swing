@@ -111,10 +111,10 @@ public class MsPacManIntroScene extends GameScene {
 		var y0 = sceneController.context().blinkyEndPosition.y();
 		g.setColor(Color.WHITE);
 		g.setFont(r2D.getArcadeFont());
-		if (ctx.ghostIndex() == 0) {
+		if (ctx.ghostIndex == 0) {
 			g.drawString("WITH", tx, y0 + TS * 3);
 		}
-		Ghost ghost = ctx.ghosts.get(ctx.ghostIndex());
+		Ghost ghost = ctx.ghosts.get(ctx.ghostIndex);
 		g.setColor(r2D.getGhostColor(ghost.id()));
 		g.drawString(ghost.name().toUpperCase(), TS * (14 - ghost.name().length() / 2), y0 + TS * 6);
 	}
