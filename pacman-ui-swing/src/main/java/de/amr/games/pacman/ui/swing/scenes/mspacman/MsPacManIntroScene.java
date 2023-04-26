@@ -108,7 +108,7 @@ public class MsPacManIntroScene extends GameScene {
 
 	private void drawGhostText(Graphics2D g) {
 		var tx = sceneController.context().titlePosition.x();
-		var y0 = sceneController.context().blinkyEndPosition.y();
+		var y0 = sceneController.context().stopY;
 		g.setColor(Color.WHITE);
 		g.setFont(r2D.getArcadeFont());
 		if (ctx.ghostIndex == 0) {
@@ -121,7 +121,7 @@ public class MsPacManIntroScene extends GameScene {
 
 	private void drawMsPacManText(Graphics2D g) {
 		var tx = sceneController.context().titlePosition.x();
-		var y0 = sceneController.context().blinkyEndPosition.y();
+		var y0 = sceneController.context().stopY;
 		g.setColor(Color.WHITE);
 		g.setFont(r2D.getArcadeFont());
 		g.drawString("STARRING", tx, y0 + TS * 3);
@@ -130,8 +130,8 @@ public class MsPacManIntroScene extends GameScene {
 	}
 
 	private void drawLights(Graphics2D g, int numDotsX, int numDotsY) {
-		var x0 = sceneController.context().blinkyEndPosition.x();
-		var y0 = sceneController.context().blinkyEndPosition.y();
+		var x0 = sceneController.context().stopX;
+		var y0 = sceneController.context().stopY;
 		long time = ctx.marqueeTimer.tick();
 		int light = (int) (time / 2) % (numDotsX / 2);
 		for (int dot = 0; dot < 2 * (numDotsX + numDotsY); ++dot) {
