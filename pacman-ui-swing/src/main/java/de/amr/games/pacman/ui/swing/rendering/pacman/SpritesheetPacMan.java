@@ -41,6 +41,7 @@ import de.amr.games.pacman.lib.anim.AnimationByDirection;
 import de.amr.games.pacman.lib.anim.FrameSequence;
 import de.amr.games.pacman.lib.anim.SimpleAnimation;
 import de.amr.games.pacman.lib.steering.Direction;
+import de.amr.games.pacman.model.GameModel;
 import de.amr.games.pacman.model.actors.Ghost;
 import de.amr.games.pacman.model.actors.Pac;
 import de.amr.games.pacman.ui.swing.lib.Spritesheet;
@@ -261,7 +262,7 @@ public class SpritesheetPacMan implements Rendering2D {
 	@Override
 	public void drawCopyright(Graphics2D g, int x, int y) {
 		g.setFont(getArcadeFont());
-		g.setColor(getGhostColor(Ghost.ID_PINK_GHOST));
+		g.setColor(getGhostColor(GameModel.PINK_GHOST));
 		g.drawString("\u00A9 1980 MIDWAY MFG. CO.", x, y);
 	}
 }

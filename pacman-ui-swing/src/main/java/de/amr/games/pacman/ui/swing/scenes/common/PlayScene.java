@@ -31,7 +31,6 @@ import java.awt.Image;
 import de.amr.games.pacman.controller.GameState;
 import de.amr.games.pacman.event.GameStateChangeEvent;
 import de.amr.games.pacman.model.GameModel;
-import de.amr.games.pacman.model.actors.Ghost;
 import de.amr.games.pacman.model.world.World;
 import de.amr.games.pacman.ui.swing.rendering.common.DebugDraw;
 import de.amr.games.pacman.ui.swing.shell.Keyboard;
@@ -58,10 +57,10 @@ public class PlayScene extends GameScene {
 			level.getBonus().ifPresent(bonus -> r2D.drawBonus(g, bonus));
 			r2D.drawGameState(g, game, game.hasCredit() ? gameController.state() : GameState.GAME_OVER);
 			r2D.drawPac(g, level.pac());
-			r2D.drawGhost(g, level.ghost(Ghost.ID_ORANGE_GHOST));
-			r2D.drawGhost(g, level.ghost(Ghost.ID_CYAN_GHOST));
-			r2D.drawGhost(g, level.ghost(Ghost.ID_PINK_GHOST));
-			r2D.drawGhost(g, level.ghost(Ghost.ID_RED_GHOST));
+			r2D.drawGhost(g, level.ghost(GameModel.ORANGE_GHOST));
+			r2D.drawGhost(g, level.ghost(GameModel.CYAN_GHOST));
+			r2D.drawGhost(g, level.ghost(GameModel.PINK_GHOST));
+			r2D.drawGhost(g, level.ghost(GameModel.RED_GHOST));
 			if (PacManGameUI.isDebugDraw()) {
 				DebugDraw.drawPlaySceneDebugInfo(g, gameController);
 			}

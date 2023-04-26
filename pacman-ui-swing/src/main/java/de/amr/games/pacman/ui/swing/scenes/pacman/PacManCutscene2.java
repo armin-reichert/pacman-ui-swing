@@ -68,7 +68,7 @@ public class PacManCutscene2 extends GameScene {
 		pac.show();
 
 		stretched = SpritesheetPacMan.get().createBlinkyStretchedAnimation();
-		blinky = new Ghost(Ghost.ID_RED_GHOST, "Blinky");
+		blinky = new Ghost(GameModel.RED_GHOST, "Blinky");
 		blinky.setAnimations(new GhostAnimations(blinky, r2D));
 		var damagedBlinkyAnimation = SpritesheetPacMan.get().createBlinkyDamagedAnimation();
 		blinky.animations().ifPresent(anims -> anims.put(GameModel.AK_BLINKY_DAMAGED, damagedBlinkyAnimation));

@@ -30,7 +30,7 @@ import static de.amr.games.pacman.lib.Globals.TS;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
-import de.amr.games.pacman.model.actors.Ghost;
+import de.amr.games.pacman.model.GameModel;
 import de.amr.games.pacman.ui.swing.rendering.mspacman.SpritesheetMsPacMan;
 import de.amr.games.pacman.ui.swing.scenes.common.GameScene;
 import de.amr.games.pacman.ui.swing.shell.Keyboard;
@@ -55,7 +55,7 @@ public class MsPacManCreditScene extends GameScene {
 		r2D.drawScores(g, game, true);
 
 		g.setFont(r2D.getArcadeFont());
-		g.setColor(r2D.getGhostColor(Ghost.ID_ORANGE_GHOST));
+		g.setColor(r2D.getGhostColor(GameModel.ORANGE_GHOST));
 		g.drawString("PUSH START BUTTON", TS * (6), TS * (16));
 		g.drawString("1 PLAYER ONLY", TS * (8), TS * (18));
 		g.drawString("ADDITIONAL    AT 10000", TS * (2), TS * (25));

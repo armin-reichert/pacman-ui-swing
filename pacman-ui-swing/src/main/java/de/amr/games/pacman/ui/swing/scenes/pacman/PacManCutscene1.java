@@ -66,7 +66,7 @@ public class PacManCutscene1 extends GameScene {
 		pac.setPixelSpeed(1.25f);
 		pac.show();
 
-		blinky = new Ghost(Ghost.ID_RED_GHOST, "Blinky");
+		blinky = new Ghost(GameModel.RED_GHOST, "Blinky");
 		blinky.setAnimations(new GhostAnimations(blinky, r2D));
 		blinky.animations().ifPresent(anims -> anims.select(GameModel.AK_GHOST_COLOR));
 		blinky.animation(GameModel.AK_GHOST_COLOR).ifPresent(Animated::restart);
