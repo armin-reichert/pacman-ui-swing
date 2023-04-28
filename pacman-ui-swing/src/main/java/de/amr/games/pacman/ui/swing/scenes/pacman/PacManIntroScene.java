@@ -190,7 +190,7 @@ public class PacManIntroScene extends GameScene {
 				r2D.drawSpriteCenteredOverBox(g, r2D.getGhostSprite(id, Direction.RIGHT), TS * (3), TS * (tileY));
 				if (ctx.characterVisible[id]) {
 					g.setColor(r2D.getGhostColor(id));
-					g.drawString("-" + Context.CHARACTERS[id], TS * (6), TS * (tileY + 1));
+					g.drawString("-" + intro.context().ghostCharacters[id], TS * (6), TS * (tileY + 1));
 				}
 				if (ctx.nicknameVisible[id]) {
 					g.setColor(r2D.getGhostColor(id));
