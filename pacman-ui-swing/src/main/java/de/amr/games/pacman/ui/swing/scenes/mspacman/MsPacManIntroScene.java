@@ -29,9 +29,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 import de.amr.games.pacman.controller.GameController;
-import de.amr.games.pacman.controller.MsPacManIntroController;
-import de.amr.games.pacman.controller.MsPacManIntroData;
-import de.amr.games.pacman.controller.MsPacManIntroState;
+import de.amr.games.pacman.controller.MsPacManIntro;
 import de.amr.games.pacman.lib.anim.AnimationMap;
 import de.amr.games.pacman.model.actors.Ghost;
 import de.amr.games.pacman.ui.swing.rendering.common.GhostAnimations;
@@ -46,19 +44,19 @@ import de.amr.games.pacman.ui.swing.shell.Keyboard;
  */
 public class MsPacManIntroScene extends GameScene {
 
-	private MsPacManIntroController sceneController;
-	private MsPacManIntroData ctx;
+	private MsPacManIntro sceneController;
+	private MsPacManIntro.Context ctx;
 
 	@Override
 	public void setContext(GameController gameController) {
 		super.setContext(gameController);
-		sceneController = new MsPacManIntroController(gameController);
+		sceneController = new MsPacManIntro(gameController);
 		ctx = sceneController.context();
 	}
 
 	@Override
 	public void init() {
-		sceneController.restart(MsPacManIntroState.START);
+		sceneController.restart(MsPacManIntro.State.START);
 		ctx.msPacMan.setAnimations(new PacAnimations(ctx.msPacMan, r2D));
 		ctx.msPacMan.animations().ifPresent(AnimationMap::ensureRunning);
 		ctx.ghosts.forEach(ghost -> {
@@ -83,10 +81,10 @@ public class MsPacManIntroScene extends GameScene {
 		r2D.drawScores(g, gameController.game(), true);
 		drawTitle(g);
 		drawMarquee(g);
-		if (sceneController.state() == MsPacManIntroState.GHOSTS) {
+		if (sceneController.state() == MsPacManIntro.State.GHOSTS) {
 			drawGhostText(g);
-		} else if (sceneController.state() == MsPacManIntroState.MSPACMAN
-				|| sceneController.state() == MsPacManIntroState.READY_TO_PLAY) {
+		} else if (sceneController.state() == MsPacManIntro.State.MSPACMAN
+				|| sceneController.state() == MsPacManIntro.State.READY_TO_PLAY) {
 			drawMsPacManText(g);
 		}
 		ctx.ghosts.forEach(ghost -> r2D.drawGhost(g, ghost));
