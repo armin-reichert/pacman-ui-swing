@@ -27,7 +27,6 @@ import static de.amr.games.pacman.lib.Globals.TS;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.util.stream.Stream;
 
 import de.amr.games.pacman.controller.GameController;
 import de.amr.games.pacman.controller.PacManIntro;
@@ -36,6 +35,7 @@ import de.amr.games.pacman.controller.PacManIntro.State;
 import de.amr.games.pacman.lib.anim.AnimationMap;
 import de.amr.games.pacman.lib.steering.Direction;
 import de.amr.games.pacman.model.GameModel;
+import de.amr.games.pacman.model.actors.Ghost;
 import de.amr.games.pacman.model.actors.GhostState;
 import de.amr.games.pacman.ui.swing.rendering.common.GhostAnimations;
 import de.amr.games.pacman.ui.swing.rendering.common.PacAnimations;
@@ -68,14 +68,14 @@ public class PacManIntroScene extends GameScene {
 		intro.restart(State.START);
 		ctx.pacMan.setAnimations(new PacAnimations(ctx.pacMan, r2D));
 		ctx.pacMan.animations().ifPresent(AnimationMap::ensureRunning);
-		Stream.of(ctx.ghosts).forEach(ghost -> ghost.setAnimations(new GhostAnimations(ghost, r2D)));
+		ctx.ghosts().forEach(ghost -> ghost.setAnimations(new GhostAnimations(ghost, r2D)));
 	}
 
 	private void onSceneStateChange(State fromState, State toState) {
 		if (fromState == State.CHASING_PAC && toState == State.CHASING_GHOSTS) {
-			for (var ghost : ctx.ghosts) {
+			ctx.ghosts().forEach(ghost -> {
 				ghost.animations().ifPresent(anims -> anims.select(GameModel.AK_GHOST_BLUE));
-			}
+			});
 		}
 	}
 
@@ -93,7 +93,7 @@ public class PacManIntroScene extends GameScene {
 
 	private void updateAnimations() {
 		if (intro.state() == State.CHASING_GHOSTS) {
-			for (var ghost : ctx.ghosts) {
+			ctx.ghosts().forEach(ghost -> {
 				ghost.animations().ifPresent(anims -> {
 					if (ghost.is(GhostState.EATEN)) {
 						anims.select(GameModel.AK_GHOST_VALUE);
@@ -106,7 +106,7 @@ public class PacManIntroScene extends GameScene {
 						}
 					}
 				});
-			}
+			});
 		}
 	}
 
@@ -133,7 +133,7 @@ public class PacManIntroScene extends GameScene {
 			drawGallery(g);
 			drawPoints(g, 11, 25);
 			r2D.drawCopyright(g, TS * (3), TS * (32));
-			if (Boolean.TRUE.equals(intro.context().blinking.frame())) {
+			if (Boolean.TRUE.equals(ctx.blinking.frame())) {
 				drawEnergizer(g);
 			}
 			int offset = intro.state().timer().tick() % 5 < 2 ? 0 : -1;
@@ -168,13 +168,14 @@ public class PacManIntroScene extends GameScene {
 	}
 
 	private void drawGuys(Graphics2D g, int offset) {
+		var ghosts = ctx.ghosts().toArray(Ghost[]::new);
 		Graphics2D gg = (Graphics2D) g.create();
 		gg.translate(offset, 0);
-		r2D.drawGhost(gg, ctx.ghosts[1]);
-		r2D.drawGhost(gg, ctx.ghosts[2]);
+		r2D.drawGhost(gg, ghosts[1]);
+		r2D.drawGhost(gg, ghosts[2]);
 		gg.dispose();
-		r2D.drawGhost(g, ctx.ghosts[0]);
-		r2D.drawGhost(g, ctx.ghosts[3]);
+		r2D.drawGhost(g, ghosts[0]);
+		r2D.drawGhost(g, ghosts[3]);
 		r2D.drawPac(g, ctx.pacMan);
 	}
 
@@ -185,16 +186,16 @@ public class PacManIntroScene extends GameScene {
 		g.drawString("/", TS * (16), TS * (6));
 		g.drawString("NICKNAME", TS * (18), TS * (6));
 		for (int id = 0; id < 4; ++id) {
-			if (ctx.pictureVisible[id]) {
+			if (ctx.ghostInfo[id].pictureVisible) {
 				int tileY = 7 + 3 * id;
 				r2D.drawSpriteCenteredOverBox(g, r2D.getGhostSprite(id, Direction.RIGHT), TS * (3), TS * (tileY));
-				if (ctx.characterVisible[id]) {
+				if (ctx.ghostInfo[id].characterVisible) {
 					g.setColor(r2D.getGhostColor(id));
-					g.drawString("-" + intro.context().ghostCharacters[id], TS * (6), TS * (tileY + 1));
+					g.drawString("-" + ctx.ghostInfo[id].character, TS * (6), TS * (tileY + 1));
 				}
-				if (ctx.nicknameVisible[id]) {
+				if (ctx.ghostInfo[id].nicknameVisible) {
 					g.setColor(r2D.getGhostColor(id));
-					g.drawString("\"" + intro.context().ghosts[id].name() + "\"", TS * (17), TS * (tileY + 1));
+					g.drawString("\"" + ctx.ghostInfo[id].ghost.name() + "\"", TS * (17), TS * (tileY + 1));
 				}
 			}
 		}
@@ -203,7 +204,7 @@ public class PacManIntroScene extends GameScene {
 	private void drawPoints(Graphics2D g, int tileX, int tileY) {
 		g.setColor(r2D.getFoodColor(1));
 		g.fillRect(TS * (tileX) + 6, TS * (tileY - 1) + 2, 2, 2);
-		if (Boolean.TRUE.equals(intro.context().blinking.frame())) {
+		if (Boolean.TRUE.equals(ctx.blinking.frame())) {
 			g.fillOval(TS * (tileX), TS * (tileY + 1) - 2, 10, 10);
 		}
 		g.setColor(Color.WHITE);
