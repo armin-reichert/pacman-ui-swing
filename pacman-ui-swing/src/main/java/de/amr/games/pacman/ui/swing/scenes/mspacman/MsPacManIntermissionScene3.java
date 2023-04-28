@@ -47,7 +47,7 @@ import de.amr.games.pacman.ui.swing.scenes.common.GameScene;
 public class MsPacManIntermissionScene3 extends GameScene {
 
 	private MsPacManIntermission3 sceneController;
-	private MsPacManIntermission3.Data ctx;
+	private MsPacManIntermission3.Context ctx;
 	private Stork2D stork2D;
 
 	@Override
@@ -59,7 +59,7 @@ public class MsPacManIntermissionScene3 extends GameScene {
 
 	@Override
 	public void init() {
-		sceneController.restart(MsPacManIntermission3.IntermissionState.FLAP);
+		sceneController.restart(MsPacManIntermission3.State.FLAP);
 		ctx.clapperboard.setAnimation(SpritesheetMsPacMan.get().createClapperboardAnimation());
 		ctx.msPacMan.setAnimations(new PacAnimations(ctx.msPacMan, r2D));
 		ctx.msPacMan.animations().ifPresent(AnimationMap::ensureRunning);
