@@ -180,7 +180,7 @@ public class PacManIntroScene extends GameScene {
 	}
 
 	private void drawGallery(Graphics2D g) {
-		g.setColor(Color.WHITE);
+		g.setColor(new Color(222, 222, 255));
 		g.setFont(r2D.getArcadeFont());
 		g.drawString("CHARACTER", TS * (6), TS * (6));
 		g.drawString("/", TS * (16), TS * (6));
@@ -207,7 +207,7 @@ public class PacManIntroScene extends GameScene {
 		if (Boolean.TRUE.equals(ctx.blinking.frame())) {
 			g.fillOval(TS * (tileX), TS * (tileY + 1) - 2, 10, 10);
 		}
-		g.setColor(Color.WHITE);
+		g.setColor(new Color(222, 222, 255));
 		g.setFont(r2D.getArcadeFont());
 		g.drawString("10", TS * (tileX + 2), TS * (tileY));
 		g.drawString("50", TS * (tileX + 2), TS * (tileY + 2));

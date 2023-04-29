@@ -162,7 +162,7 @@ public interface Rendering2D {
 
 	default void drawCredit(Graphics2D g, int credit) {
 		g.setFont(getArcadeFont());
-		g.setColor(Color.WHITE);
+		g.setColor(new Color(222, 222, 255));
 		g.drawString("CREDIT  %d".formatted(credit), TS * (2), TS * (World.TILES_Y) - 2);
 	}
 
