@@ -54,7 +54,7 @@ public class PlayScene extends GameScene {
 	public void render(Graphics2D g) {
 		game.level().ifPresent(level -> {
 			drawMaze(g, level.world(), r2D.mazeNumber(level.number()));
-			level.getBonus().ifPresent(bonus -> r2D.drawBonus(g, bonus));
+			level.bonusManagement().getBonus().ifPresent(bonus -> r2D.drawBonus(g, bonus));
 			r2D.drawGameState(g, game, game.hasCredit() ? gameController.state() : GameState.GAME_OVER);
 			r2D.drawPac(g, level.pac());
 			r2D.drawGhost(g, level.ghost(GameModel.ORANGE_GHOST));
