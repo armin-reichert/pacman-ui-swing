@@ -267,23 +267,14 @@ public class PacManGameUI implements GameEventListener {
 				Graphics2D g = (Graphics2D) buffers.getDrawGraphics();
 				g.setColor(Color.BLACK);
 				g.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+				g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
 				g.scale(scaling, scaling);
-				Graphics2D smooth = createSmoothGraphics(g);
-				currentGameScene.render(smooth);
-				smooth.dispose();
+				currentGameScene.render(g);
 				flashMessageDisplay.render(g);
 				g.dispose();
 			} while (buffers.contentsRestored());
 			buffers.show();
 		} while (buffers.contentsLost());
-	}
-
-	private Graphics2D createSmoothGraphics(Graphics2D g) {
-		Graphics2D smooth = (Graphics2D) g.create();
-		smooth.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		smooth.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-		smooth.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-		return smooth;
 	}
 
 	public void showFlashMessage(double seconds, String message, Object... args) {
