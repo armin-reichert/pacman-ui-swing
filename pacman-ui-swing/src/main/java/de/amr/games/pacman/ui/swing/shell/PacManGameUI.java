@@ -39,7 +39,6 @@ import java.awt.RenderingHints;
 import java.awt.Robot;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.image.BufferStrategy;
 import java.util.List;
 
 import javax.swing.JFrame;
@@ -257,14 +256,13 @@ public class PacManGameUI implements GameEventListener {
 		if (currentGameScene == null) {
 			return;
 		}
-		BufferStrategy buffers = canvas.getBufferStrategy();
-		if (buffers == null) {
+		if (canvas.getBufferStrategy() == null) {
 			canvas.createBufferStrategy(2);
 			return;
 		}
 		do {
 			do {
-				Graphics2D g = (Graphics2D) buffers.getDrawGraphics();
+				Graphics2D g = (Graphics2D) canvas.getBufferStrategy().getDrawGraphics();
 				g.setColor(Color.BLACK);
 				g.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 				g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
@@ -272,9 +270,9 @@ public class PacManGameUI implements GameEventListener {
 				currentGameScene.render(g);
 				flashMessageDisplay.render(g);
 				g.dispose();
-			} while (buffers.contentsRestored());
-			buffers.show();
-		} while (buffers.contentsLost());
+			} while (canvas.getBufferStrategy().contentsRestored());
+			canvas.getBufferStrategy().show();
+		} while (canvas.getBufferStrategy().contentsLost());
 	}
 
 	public void showFlashMessage(double seconds, String message, Object... args) {
