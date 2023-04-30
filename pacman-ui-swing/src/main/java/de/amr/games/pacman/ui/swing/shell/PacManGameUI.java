@@ -198,7 +198,7 @@ public class PacManGameUI implements GameEventListener {
 			case MS_PACMAN -> SpritesheetMsPacMan.get();
 			case PACMAN -> SpritesheetPacMan.get();
 			};
-			level.world().setAnimations(new WorldAnimations(r2D, level.number()));
+			level.world().setAnimations(new WorldAnimations(r2D, r2D.mazeNumber(level.number())));
 			level.pac().setAnimations(new PacAnimations(level.pac(), r2D));
 			level.ghosts().forEach(ghost -> ghost.setAnimations(new GhostAnimations(ghost, r2D)));
 		});
