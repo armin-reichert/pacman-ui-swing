@@ -88,7 +88,7 @@ public class PacManCutscene2 extends GameScene {
 		}
 		++frame;
 		if (frame == 0) {
-			GameEvents.publishSoundEvent("start_intermission_2");
+			GameEvents.publishSoundEvent(GameModel.SE_START_INTERMISSION_2);
 		} else if (frame == 110) {
 			blinky.setPixelSpeed(1.25f);
 			blinky.show();

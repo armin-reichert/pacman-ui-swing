@@ -84,7 +84,7 @@ public class PacManCutscene1 extends GameScene {
 		}
 		++frame;
 		if (frame == 0) {
-			GameEvents.publishSoundEvent("start_intermission_1");
+			GameEvents.publishSoundEvent(GameModel.SE_START_INTERMISSION_1);
 		} else if (frame == 260) {
 			blinky.placeAtTile(v2i(-2, 20), 4, 0);
 			blinky.setMoveAndWishDir(Direction.RIGHT);

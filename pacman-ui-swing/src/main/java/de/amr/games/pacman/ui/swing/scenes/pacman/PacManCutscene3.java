@@ -71,7 +71,7 @@ public class PacManCutscene3 extends GameScene {
 		}
 		++frame;
 		if (frame == 0) {
-			GameEvents.publishSoundEvent("start_intermission_3");
+			GameEvents.publishSoundEvent(GameModel.SE_START_INTERMISSION_3);
 			pac.placeAtTile(v2i(29, 20), 0, 0);
 			pac.setMoveDir(Direction.LEFT);
 			pac.setPixelSpeed(1.25f);
