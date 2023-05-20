@@ -33,7 +33,7 @@ import de.amr.games.pacman.model.actors.Creature;
  * 
  * @author Armin Reichert
  */
-public class KeyboardSteering implements Steering {
+public class KeyboardSteering extends Steering {
 
 	private String up;
 	private String down;
