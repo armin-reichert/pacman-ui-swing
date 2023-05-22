@@ -178,15 +178,12 @@ public interface Rendering2D {
 		if (showHiscoreOnly) {
 			g.drawString("00", TS * (6), TS * (2));
 		} else {
-			game.score().ifPresent(score -> {
-				g.drawString(String.format("%7d", score.points()), TS * (1), TS * (2));
-				g.drawString(String.format("L%d", score.levelNumber()), TS * (9), TS * (2));
-			});
+			g.drawString(String.format("%7d", game.score().points()), TS * (1), TS * (2));
+			g.drawString(String.format("L%d", game.score().levelNumber()), TS * (9), TS * (2));
 		}
-		var highScore = game.highScore();
-		if (highScore.isPresent() && highScore.get().points() > 0) {
-			g.drawString(String.format("%7d", highScore.get().points()), TS * (15), TS * (2));
-			g.drawString(String.format("L%d", highScore.get().levelNumber()), TS * (23), TS * (2));
+		if (game.highScore().points() > 0) {
+			g.drawString(String.format("%7d", game.highScore().points()), TS * (15), TS * (2));
+			g.drawString(String.format("L%d", game.highScore().levelNumber()), TS * (23), TS * (2));
 		} else {
 			g.drawString("00", TS * (20), TS * (2));
 		}
