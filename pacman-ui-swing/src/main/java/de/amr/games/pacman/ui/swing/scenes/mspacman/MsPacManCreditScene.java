@@ -52,21 +52,21 @@ public class MsPacManCreditScene extends GameScene {
 	@Override
 	public void render(Graphics2D g) {
 
-		r2D.drawScores(g, game, true);
+		gss.drawScores(g, game, true);
 
-		g.setFont(r2D.getArcadeFont());
-		g.setColor(r2D.getGhostColor(GameModel.ORANGE_GHOST));
+		g.setFont(gss.getArcadeFont());
+		g.setColor(gss.getGhostColor(GameModel.ORANGE_GHOST));
 		g.drawString("PUSH START BUTTON", TS * (6), TS * (16));
 		g.drawString("1 PLAYER ONLY", TS * (8), TS * (18));
 		g.drawString("ADDITIONAL    AT 10000", TS * (2), TS * (25));
 		BufferedImage msPacMan = SpritesheetMsPacMan.get().rhs(1, 0);
-		r2D.drawSpriteCenteredOverBox(g, msPacMan, TS * (13) + HTS, TS * (24) - 2);
-		g.setFont(r2D.getArcadeFont());
-		g.setFont(r2D.getArcadeFont().deriveFont(6.0f));
+		gss.drawSpriteCenteredOverBox(g, msPacMan, TS * (13) + HTS, TS * (24) - 2);
+		g.setFont(gss.getArcadeFont());
+		g.setFont(gss.getArcadeFont().deriveFont(6.0f));
 		g.drawString("PTS", TS * (25), TS * (25));
 
-		r2D.drawCopyright(g, TS * (6), TS * (28));
-		r2D.drawCredit(g, game.credit());
+		gss.drawCopyright(g, TS * (6), TS * (28));
+		gss.drawCredit(g, game.credit());
 	}
 
 }

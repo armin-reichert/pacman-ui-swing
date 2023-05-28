@@ -59,7 +59,7 @@ public class PacManCutscene2 extends GameScene {
 		initialDelay = 120;
 
 		pac = new Pac("Pac-Man");
-		pac.setAnimations(new PacAnimations(pac, r2D));
+		pac.setAnimations(new PacAnimations(pac, gss));
 		pac.animations().ifPresent(anims -> anims.select(GameModel.AK_PAC_MUNCHING));
 		pac.animation(GameModel.AK_PAC_MUNCHING).ifPresent(Animated::restart);
 		pac.placeAtTile(v2i(29, 20), 0, 0);
@@ -69,7 +69,7 @@ public class PacManCutscene2 extends GameScene {
 
 		stretched = SpritesheetPacMan.get().createBlinkyStretchedAnimation();
 		blinky = new Ghost(GameModel.RED_GHOST, "Blinky");
-		blinky.setAnimations(new GhostAnimations(blinky, r2D));
+		blinky.setAnimations(new GhostAnimations(blinky, gss));
 		var damagedBlinkyAnimation = SpritesheetPacMan.get().createBlinkyDamagedAnimation();
 		blinky.animations().ifPresent(anims -> anims.put(GameModel.AK_BLINKY_DAMAGED, damagedBlinkyAnimation));
 		blinky.animations().ifPresent(anims -> anims.select(GameModel.AK_GHOST_COLOR));
@@ -123,9 +123,9 @@ public class PacManCutscene2 extends GameScene {
 	@Override
 	public void render(Graphics2D g) {
 		if (stretched != null) {
-			r2D.drawSprite(g, stretched.frame(), TS * (14), TS * (19) + 3);
+			gss.drawSprite(g, stretched.frame(), TS * (14), TS * (19) + 3);
 		}
-		r2D.drawGhost(g, blinky);
-		r2D.drawPac(g, pac);
+		gss.drawGhost(g, blinky);
+		gss.drawPac(g, pac);
 	}
 }

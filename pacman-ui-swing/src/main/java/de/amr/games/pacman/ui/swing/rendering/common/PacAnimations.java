@@ -34,10 +34,10 @@ import de.amr.games.pacman.model.actors.Pac;
  */
 public class PacAnimations extends AnimationMap {
 
-	public PacAnimations(Pac pac, Rendering2D r2D) {
+	public PacAnimations(Pac pac, Rendering2D gss) {
 		super(GameModel.ANIMATION_MAP_CAPACITY);
-		put(GameModel.AK_PAC_DYING, r2D.createPacDyingAnimation());
-		put(GameModel.AK_PAC_MUNCHING, r2D.createPacMunchingAnimationMap(pac));
+		put(GameModel.AK_PAC_DYING, gss.createPacDyingAnimation());
+		put(GameModel.AK_PAC_MUNCHING, gss.createPacMunchingAnimationMap(pac));
 		select(GameModel.AK_PAC_MUNCHING);
 	}
 

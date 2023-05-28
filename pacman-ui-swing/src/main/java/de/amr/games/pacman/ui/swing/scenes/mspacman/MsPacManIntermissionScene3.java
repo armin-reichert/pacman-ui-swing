@@ -61,13 +61,13 @@ public class MsPacManIntermissionScene3 extends GameScene {
 	public void init() {
 		sceneController.restart(MsPacManIntermission3.State.FLAP);
 		ctx.clapperboard.setAnimation(SpritesheetMsPacMan.get().createClapperboardAnimation());
-		ctx.msPacMan.setAnimations(new PacAnimations(ctx.msPacMan, r2D));
+		ctx.msPacMan.setAnimations(new PacAnimations(ctx.msPacMan, gss));
 		ctx.msPacMan.animations().ifPresent(AnimationMap::ensureRunning);
-		ctx.pacMan.setAnimations(new PacAnimations(ctx.pacMan, r2D));
+		ctx.pacMan.setAnimations(new PacAnimations(ctx.pacMan, gss));
 		var husbandMunching = SpritesheetMsPacMan.get().createHusbandMunchingAnimations(ctx.pacMan);
 		ctx.pacMan.animations().ifPresent(anims -> anims.put(GameModel.AK_PAC_MUNCHING, husbandMunching));
 		ctx.pacMan.animations().ifPresent(AnimationMap::ensureRunning);
-		stork2D = new Stork2D(ctx.stork, r2D);
+		stork2D = new Stork2D(ctx.stork, gss);
 		stork2D.animation.restart();
 	}
 
@@ -78,11 +78,11 @@ public class MsPacManIntermissionScene3 extends GameScene {
 
 	@Override
 	public void render(Graphics2D g) {
-		var ssmp = ((SpritesheetMsPacMan) r2D);
+		var ssmp = ((SpritesheetMsPacMan) gss);
 		ssmp.drawClapperboard(g, ctx.clapperboard);
-		r2D.drawPac(g, ctx.msPacMan);
-		r2D.drawPac(g, ctx.pacMan);
+		gss.drawPac(g, ctx.msPacMan);
+		gss.drawPac(g, ctx.pacMan);
 		stork2D.render(g);
-		r2D.drawEntity(g, ctx.bag, ctx.bagOpen ? ssmp.getJunior() : ssmp.getBlueBag());
+		gss.drawEntity(g, ctx.bag, ctx.bagOpen ? ssmp.getJunior() : ssmp.getBlueBag());
 	}
 }

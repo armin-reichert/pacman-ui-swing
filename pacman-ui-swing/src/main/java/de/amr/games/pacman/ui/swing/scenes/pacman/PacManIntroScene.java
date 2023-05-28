@@ -66,9 +66,9 @@ public class PacManIntroScene extends GameScene {
 	@Override
 	public void init() {
 		intro.restart(State.START);
-		ctx.pacMan.setAnimations(new PacAnimations(ctx.pacMan, r2D));
+		ctx.pacMan.setAnimations(new PacAnimations(ctx.pacMan, gss));
 		ctx.pacMan.animations().ifPresent(AnimationMap::ensureRunning);
-		ctx.ghosts().forEach(ghost -> ghost.setAnimations(new GhostAnimations(ghost, r2D)));
+		ctx.ghosts().forEach(ghost -> ghost.setAnimations(new GhostAnimations(ghost, gss)));
 	}
 
 	private void onSceneStateChange(State fromState, State toState) {
@@ -125,14 +125,14 @@ public class PacManIntroScene extends GameScene {
 			var timer = intro.state().timer();
 			if (timer.tick() > timer.secToTicks(1)) {
 				drawEnergizer(g);
-				r2D.drawCopyright(g, TS * (3), TS * (32));
+				gss.drawCopyright(g, TS * (3), TS * (32));
 			}
 		}
 		case CHASING_PAC -> {
 			drawHUD(g);
 			drawGallery(g);
 			drawPoints(g, 11, 25);
-			r2D.drawCopyright(g, TS * (3), TS * (32));
+			gss.drawCopyright(g, TS * (3), TS * (32));
 			if (Boolean.TRUE.equals(ctx.blinking.frame())) {
 				drawEnergizer(g);
 			}
@@ -143,7 +143,7 @@ public class PacManIntroScene extends GameScene {
 			drawHUD(g);
 			drawGallery(g);
 			drawPoints(g, 11, 25);
-			r2D.drawCopyright(g, TS * (3), TS * (32));
+			gss.drawCopyright(g, TS * (3), TS * (32));
 			drawGuys(g, 0);
 		}
 		case READY_TO_PLAY -> {
@@ -157,44 +157,44 @@ public class PacManIntroScene extends GameScene {
 		}
 		}
 		if (game.hasCredit()) {
-			r2D.drawLevelCounter(g, game.levelCounter());
+			gss.drawLevelCounter(g, game.levelCounter());
 		}
 	}
 
 	private void drawHUD(Graphics2D g) {
-		r2D.drawScores(g, game, true);
-		r2D.drawCredit(g, game.credit());
-		r2D.drawLevelCounter(g, game.levelCounter());
+		gss.drawScores(g, game, true);
+		gss.drawCredit(g, game.credit());
+		gss.drawLevelCounter(g, game.levelCounter());
 	}
 
 	private void drawGuys(Graphics2D g, int offset) {
 		var ghosts = ctx.ghosts().toArray(Ghost[]::new);
 		Graphics2D gg = (Graphics2D) g.create();
 		gg.translate(offset, 0);
-		r2D.drawGhost(gg, ghosts[1]);
-		r2D.drawGhost(gg, ghosts[2]);
+		gss.drawGhost(gg, ghosts[1]);
+		gss.drawGhost(gg, ghosts[2]);
 		gg.dispose();
-		r2D.drawGhost(g, ghosts[0]);
-		r2D.drawGhost(g, ghosts[3]);
-		r2D.drawPac(g, ctx.pacMan);
+		gss.drawGhost(g, ghosts[0]);
+		gss.drawGhost(g, ghosts[3]);
+		gss.drawPac(g, ctx.pacMan);
 	}
 
 	private void drawGallery(Graphics2D g) {
 		g.setColor(new Color(222, 222, 255));
-		g.setFont(r2D.getArcadeFont());
+		g.setFont(gss.getArcadeFont());
 		g.drawString("CHARACTER", TS * (6), TS * (6));
 		g.drawString("/", TS * (16), TS * (6));
 		g.drawString("NICKNAME", TS * (18), TS * (6));
 		for (int id = 0; id < 4; ++id) {
 			if (ctx.ghostInfo[id].pictureVisible) {
 				int tileY = 7 + 3 * id;
-				r2D.drawSpriteCenteredOverBox(g, r2D.getGhostSprite(id, Direction.RIGHT), TS * (3), TS * (tileY));
+				gss.drawSpriteCenteredOverBox(g, gss.getGhostSprite(id, Direction.RIGHT), TS * (3), TS * (tileY));
 				if (ctx.ghostInfo[id].characterVisible) {
-					g.setColor(r2D.getGhostColor(id));
+					g.setColor(gss.getGhostColor(id));
 					g.drawString("-" + ctx.ghostInfo[id].character, TS * (6), TS * (tileY + 1));
 				}
 				if (ctx.ghostInfo[id].nicknameVisible) {
-					g.setColor(r2D.getGhostColor(id));
+					g.setColor(gss.getGhostColor(id));
 					g.drawString("\"" + ctx.ghostInfo[id].ghost.name() + "\"", TS * (17), TS * (tileY + 1));
 				}
 			}
@@ -202,22 +202,22 @@ public class PacManIntroScene extends GameScene {
 	}
 
 	private void drawPoints(Graphics2D g, int tileX, int tileY) {
-		g.setColor(r2D.getFoodColor(1));
+		g.setColor(gss.getFoodColor(1));
 		g.fillRect(TS * (tileX) + 6, TS * (tileY - 1) + 2, 2, 2);
 		if (Boolean.TRUE.equals(ctx.blinking.frame())) {
 			g.fillOval(TS * (tileX), TS * (tileY + 1) - 2, 10, 10);
 		}
 		g.setColor(new Color(222, 222, 255));
-		g.setFont(r2D.getArcadeFont());
+		g.setFont(gss.getArcadeFont());
 		g.drawString("10", TS * (tileX + 2), TS * (tileY));
 		g.drawString("50", TS * (tileX + 2), TS * (tileY + 2));
-		g.setFont(r2D.getArcadeFont().deriveFont(6f));
+		g.setFont(gss.getArcadeFont().deriveFont(6f));
 		g.drawString("PTS", TS * (tileX + 5), TS * (tileY));
 		g.drawString("PTS", TS * (tileX + 5), TS * (tileY + 2));
 	}
 
 	private void drawEnergizer(Graphics2D g) {
-		g.setColor(r2D.getFoodColor(1));
+		g.setColor(gss.getFoodColor(1));
 		g.fillOval(TS * (3), TS * (20), TS, TS);
 	}
 }

@@ -193,13 +193,13 @@ public class PacManGameUI implements GameEventListener {
 	@Override
 	public void onLevelStarting(GameEvent e) {
 		gameController.game().level().ifPresent(level -> {
-			var r2D = switch (gameController.game().variant()) {
+			var gss = switch (gameController.game().variant()) {
 			case MS_PACMAN -> SpritesheetMsPacMan.get();
 			case PACMAN -> SpritesheetPacMan.get();
 			};
-			level.world().setAnimations(new WorldAnimations(r2D, r2D.mazeNumber(level.number())));
-			level.pac().setAnimations(new PacAnimations(level.pac(), r2D));
-			level.ghosts().forEach(ghost -> ghost.setAnimations(new GhostAnimations(ghost, r2D)));
+			level.world().setAnimations(new WorldAnimations(gss, gss.mazeNumber(level.number())));
+			level.pac().setAnimations(new PacAnimations(level.pac(), gss));
+			level.ghosts().forEach(ghost -> ghost.setAnimations(new GhostAnimations(ghost, gss)));
 		});
 	}
 

@@ -46,12 +46,12 @@ public abstract class GameScene implements GameEventListener {
 	protected GameController gameController;
 	protected Vector2i size = new Vector2i(World.TILES_X * TS, World.TILES_Y * TS);
 	protected GameModel game;
-	protected Rendering2D r2D;
+	protected Rendering2D gss;
 
 	public void setContext(GameController gameController) {
 		this.gameController = gameController;
 		this.game = gameController.game();
-		this.r2D = switch (game.variant()) {
+		this.gss = switch (game.variant()) {
 		case MS_PACMAN -> SpritesheetMsPacMan.get();
 		case PACMAN -> SpritesheetPacMan.get();
 		};

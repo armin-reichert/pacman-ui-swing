@@ -57,9 +57,9 @@ public class MsPacManIntermissionScene2 extends GameScene {
 	public void init() {
 		sceneController.restart(MsPacManIntermission2.State.FLAP);
 		ctx.clapperboard.setAnimation(SpritesheetMsPacMan.get().createClapperboardAnimation());
-		ctx.msPacMan.setAnimations(new PacAnimations(ctx.msPacMan, r2D));
+		ctx.msPacMan.setAnimations(new PacAnimations(ctx.msPacMan, gss));
 		ctx.msPacMan.animations().ifPresent(AnimationMap::ensureRunning);
-		ctx.pacMan.setAnimations(new PacAnimations(ctx.pacMan, r2D));
+		ctx.pacMan.setAnimations(new PacAnimations(ctx.pacMan, gss));
 		var husbandMunching = SpritesheetMsPacMan.get().createHusbandMunchingAnimations(ctx.pacMan);
 		ctx.pacMan.animations().ifPresent(anims -> anims.put(GameModel.AK_PAC_MUNCHING, husbandMunching));
 		ctx.pacMan.animations().ifPresent(AnimationMap::ensureRunning);
@@ -72,8 +72,8 @@ public class MsPacManIntermissionScene2 extends GameScene {
 
 	@Override
 	public void render(Graphics2D g) {
-		((SpritesheetMsPacMan) r2D).drawClapperboard(g, ctx.clapperboard);
-		r2D.drawPac(g, ctx.msPacMan);
-		r2D.drawPac(g, ctx.pacMan);
+		((SpritesheetMsPacMan) gss).drawClapperboard(g, ctx.clapperboard);
+		gss.drawPac(g, ctx.msPacMan);
+		gss.drawPac(g, ctx.pacMan);
 	}
 }

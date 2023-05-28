@@ -34,9 +34,9 @@ import de.amr.games.pacman.model.GameModel;
  */
 public class WorldAnimations extends AnimationMap {
 
-	public WorldAnimations(Rendering2D r2D, int mazeNumber) {
+	public WorldAnimations(Rendering2D gss, int mazeNumber) {
 		super(GameModel.ANIMATION_MAP_CAPACITY);
 		put(GameModel.AK_MAZE_ENERGIZER_BLINKING, new Pulse(10, true));
-		put(GameModel.AK_MAZE_FLASHING, r2D.createMazeFlashingAnimation(mazeNumber));
+		put(GameModel.AK_MAZE_FLASHING, gss.createMazeFlashingAnimation(mazeNumber));
 	}
 }

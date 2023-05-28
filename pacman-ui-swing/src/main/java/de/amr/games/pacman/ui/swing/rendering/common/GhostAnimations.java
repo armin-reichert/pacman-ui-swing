@@ -32,13 +32,13 @@ import de.amr.games.pacman.model.actors.Ghost;
  */
 public class GhostAnimations extends AnimationMap {
 
-	public GhostAnimations(Ghost ghost, Rendering2D r2D) {
+	public GhostAnimations(Ghost ghost, Rendering2D gss) {
 		super(GameModel.ANIMATION_MAP_CAPACITY);
-		put(GameModel.AK_GHOST_EYES, r2D.createGhostEyesAnimationMap(ghost));
-		put(GameModel.AK_GHOST_FLASHING, r2D.createGhostFlashingAnimation());
-		put(GameModel.AK_GHOST_BLUE, r2D.createGhostBlueAnimation());
-		put(GameModel.AK_GHOST_COLOR, r2D.createGhostColorAnimationMap(ghost));
-		put(GameModel.AK_GHOST_VALUE, r2D.createGhostValueList());
+		put(GameModel.AK_GHOST_EYES, gss.createGhostEyesAnimationMap(ghost));
+		put(GameModel.AK_GHOST_FLASHING, gss.createGhostFlashingAnimation());
+		put(GameModel.AK_GHOST_BLUE, gss.createGhostBlueAnimation());
+		put(GameModel.AK_GHOST_COLOR, gss.createGhostColorAnimationMap(ghost));
+		put(GameModel.AK_GHOST_VALUE, gss.createGhostValueList());
 		select(GameModel.AK_GHOST_COLOR);
 	}
 }

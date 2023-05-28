@@ -57,10 +57,10 @@ public class MsPacManIntroScene extends GameScene {
 	@Override
 	public void init() {
 		sceneController.restart(MsPacManIntro.State.START);
-		ctx.msPacMan.setAnimations(new PacAnimations(ctx.msPacMan, r2D));
+		ctx.msPacMan.setAnimations(new PacAnimations(ctx.msPacMan, gss));
 		ctx.msPacMan.animations().ifPresent(AnimationMap::ensureRunning);
 		ctx.ghosts.forEach(ghost -> {
-			ghost.setAnimations(new GhostAnimations(ghost, r2D));
+			ghost.setAnimations(new GhostAnimations(ghost, gss));
 			ghost.animations().ifPresent(AnimationMap::ensureRunning);
 		});
 	}
@@ -78,7 +78,7 @@ public class MsPacManIntroScene extends GameScene {
 
 	@Override
 	public void render(Graphics2D g) {
-		r2D.drawScores(g, gameController.game(), true);
+		gss.drawScores(g, gameController.game(), true);
 		drawTitle(g);
 		drawMarquee(g);
 		if (sceneController.state() == MsPacManIntro.State.GHOSTS) {
@@ -87,12 +87,12 @@ public class MsPacManIntroScene extends GameScene {
 				|| sceneController.state() == MsPacManIntro.State.READY_TO_PLAY) {
 			drawMsPacManText(g);
 		}
-		ctx.ghosts.forEach(ghost -> r2D.drawGhost(g, ghost));
-		r2D.drawPac(g, ctx.msPacMan);
-		r2D.drawCopyright(g, TS * (6), TS * (28));
-		r2D.drawCredit(g, game.credit());
+		ctx.ghosts.forEach(ghost -> gss.drawGhost(g, ghost));
+		gss.drawPac(g, ctx.msPacMan);
+		gss.drawCopyright(g, TS * (6), TS * (28));
+		gss.drawCredit(g, game.credit());
 		if (game.hasCredit()) {
-			r2D.drawLevelCounter(g, game.levelCounter());
+			gss.drawLevelCounter(g, game.levelCounter());
 		}
 	}
 
@@ -115,7 +115,7 @@ public class MsPacManIntroScene extends GameScene {
 	private void drawTitle(Graphics2D g) {
 		var tx = sceneController.context().titlePosition.x();
 		var ty = sceneController.context().titlePosition.y();
-		g.setFont(r2D.getArcadeFont());
+		g.setFont(gss.getArcadeFont());
 		g.setColor(Color.ORANGE);
 		g.drawString("\"MS PAC-MAN\"", tx, ty);
 	}
@@ -124,12 +124,12 @@ public class MsPacManIntroScene extends GameScene {
 		var tx = sceneController.context().titlePosition.x();
 		var y0 = sceneController.context().stopY;
 		g.setColor(Color.WHITE);
-		g.setFont(r2D.getArcadeFont());
+		g.setFont(gss.getArcadeFont());
 		if (ctx.ghostIndex == 0) {
 			g.drawString("WITH", tx, y0 + TS * 3);
 		}
 		Ghost ghost = ctx.ghosts.get(ctx.ghostIndex);
-		g.setColor(r2D.getGhostColor(ghost.id()));
+		g.setColor(gss.getGhostColor(ghost.id()));
 		g.drawString(ghost.name().toUpperCase(), TS * (14 - ghost.name().length() / 2), y0 + TS * 6);
 	}
 
@@ -137,7 +137,7 @@ public class MsPacManIntroScene extends GameScene {
 		var tx = sceneController.context().titlePosition.x();
 		var y0 = sceneController.context().stopY;
 		g.setColor(Color.WHITE);
-		g.setFont(r2D.getArcadeFont());
+		g.setFont(gss.getArcadeFont());
 		g.drawString("STARRING", tx, y0 + TS * 3);
 		g.setColor(Color.YELLOW);
 		g.drawString("MS PAC-MAN", tx, y0 + TS * 6);

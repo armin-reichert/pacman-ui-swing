@@ -61,14 +61,14 @@ public class MsPacManIntermissionScene1 extends GameScene {
 	public void init() {
 		sceneController.restart(MsPacManIntermission1.State.FLAP);
 		ctx.clapperboard.setAnimation(SpritesheetMsPacMan.get().createClapperboardAnimation());
-		ctx.msPac.setAnimations(new PacAnimations(ctx.msPac, r2D));
+		ctx.msPac.setAnimations(new PacAnimations(ctx.msPac, gss));
 		ctx.msPac.animations().ifPresent(AnimationMap::ensureRunning);
-		ctx.pacMan.setAnimations(new PacAnimations(ctx.pacMan, r2D));
+		ctx.pacMan.setAnimations(new PacAnimations(ctx.pacMan, gss));
 		var husbandMunching = SpritesheetMsPacMan.get().createHusbandMunchingAnimations(ctx.pacMan);
 		ctx.pacMan.animations().ifPresent(anims -> anims.put(GameModel.AK_PAC_MUNCHING, husbandMunching));
 		ctx.pacMan.animations().ifPresent(anims -> anims.selectedAnimation().get().ensureRunning());
-		ctx.inky.setAnimations(new GhostAnimations(ctx.inky, r2D));
-		ctx.pinky.setAnimations(new GhostAnimations(ctx.pinky, r2D));
+		ctx.inky.setAnimations(new GhostAnimations(ctx.inky, gss));
+		ctx.pinky.setAnimations(new GhostAnimations(ctx.pinky, gss));
 		heart2D = new Heart2D(ctx.heart);
 		heart2D.setImage(SpritesheetMsPacMan.get().getHeart());
 	}
@@ -80,11 +80,11 @@ public class MsPacManIntermissionScene1 extends GameScene {
 
 	@Override
 	public void render(Graphics2D g) {
-		((SpritesheetMsPacMan) r2D).drawClapperboard(g, ctx.clapperboard);
-		r2D.drawPac(g, ctx.msPac);
-		r2D.drawPac(g, ctx.pacMan);
-		r2D.drawGhost(g, ctx.inky);
-		r2D.drawGhost(g, ctx.pinky);
+		((SpritesheetMsPacMan) gss).drawClapperboard(g, ctx.clapperboard);
+		gss.drawPac(g, ctx.msPac);
+		gss.drawPac(g, ctx.pacMan);
+		gss.drawGhost(g, ctx.inky);
+		gss.drawGhost(g, ctx.pinky);
 		heart2D.render(g);
 	}
 }

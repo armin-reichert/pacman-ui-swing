@@ -53,27 +53,27 @@ public class PlayScene extends GameScene {
 	@Override
 	public void render(Graphics2D g) {
 		game.level().ifPresent(level -> {
-			drawMaze(g, level.world(), r2D.mazeNumber(level.number()));
-			level.bonusManagement().getBonus().ifPresent(bonus -> r2D.drawBonus(g, bonus));
-			r2D.drawGameState(g, game, game.hasCredit() ? gameController.state() : GameState.GAME_OVER);
-			r2D.drawPac(g, level.pac());
-			r2D.drawGhost(g, level.ghost(GameModel.ORANGE_GHOST));
-			r2D.drawGhost(g, level.ghost(GameModel.CYAN_GHOST));
-			r2D.drawGhost(g, level.ghost(GameModel.PINK_GHOST));
-			r2D.drawGhost(g, level.ghost(GameModel.RED_GHOST));
+			drawMaze(g, level.world(), gss.mazeNumber(level.number()));
+			level.bonusManagement().getBonus().ifPresent(bonus -> gss.drawBonus(g, bonus));
+			gss.drawGameState(g, game, game.hasCredit() ? gameController.state() : GameState.GAME_OVER);
+			gss.drawPac(g, level.pac());
+			gss.drawGhost(g, level.ghost(GameModel.ORANGE_GHOST));
+			gss.drawGhost(g, level.ghost(GameModel.CYAN_GHOST));
+			gss.drawGhost(g, level.ghost(GameModel.PINK_GHOST));
+			gss.drawGhost(g, level.ghost(GameModel.RED_GHOST));
 			if (PacManGameUI.isDebugDraw()) {
 				DebugDraw.drawPlaySceneDebugInfo(g, gameController);
 			}
 		});
 		boolean highScoreOnly = !game.isPlaying() && gameController.state() != GameState.READY
 				&& gameController.state() != GameState.GAME_OVER;
-		r2D.drawScores(g, game, highScoreOnly);
+		gss.drawScores(g, game, highScoreOnly);
 		if (game.hasCredit()) {
-			r2D.drawLivesCounter(g, game);
+			gss.drawLivesCounter(g, game);
 		} else {
-			r2D.drawCredit(g, game.credit());
+			gss.drawCredit(g, game.credit());
 		}
-		r2D.drawLevelCounter(g, game.levelCounter());
+		gss.drawLevelCounter(g, game.levelCounter());
 	}
 
 	private void drawMaze(Graphics2D g, World world, int mazeNumber) {
@@ -81,14 +81,14 @@ public class PlayScene extends GameScene {
 		if (flashing.isPresent() && flashing.get().isRunning()) {
 			g.drawImage((Image) flashing.get().frame(), 0, TS * (3), null);
 		} else {
-			r2D.drawFullMaze(g, mazeNumber, 0, TS * (3));
+			gss.drawFullMaze(g, mazeNumber, 0, TS * (3));
 			var energizerPulse = world.animation(GameModel.AK_MAZE_ENERGIZER_BLINKING);
 			if (energizerPulse.isPresent()) {
 				boolean dark = !(boolean) energizerPulse.get().frame();
-				r2D.drawDarkTiles(g, world.tiles(),
+				gss.drawDarkTiles(g, world.tiles(),
 						tile -> world.containsEatenFood(tile) || world.isEnergizerTile(tile) && dark);
 			} else {
-				r2D.drawDarkTiles(g, world.tiles(), world::containsEatenFood);
+				gss.drawDarkTiles(g, world.tiles(), world::containsEatenFood);
 			}
 		}
 		if (PacManGameUI.isDebugDraw()) {
