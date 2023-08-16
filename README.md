@@ -1,4 +1,4 @@
-##  A JFC/Swing UI for the Pac-Man + Ms. Pac-Man games
+##  A JFC/Swing UI for the Pac-Man + Ms. Pac-Man games (Currently out of sync with core project)
 
 Note: Sound is not yet implemented after changing to event based sound handling.
 
